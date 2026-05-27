@@ -7,16 +7,18 @@ export default function MovieRow({ title, children }: Props) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(false);
-  const [hovered, setHovered] = useState(false);
+  // dragging triggers a class on the scroller that disables pointer events
+  // on descendants — that's how we prevent a release-on-card from navigating
+  // to that card. needs to be state so the className re-renders.
+  const [isDragging, setIsDragging] = useState(false);
+
+  // drag tracking via ref so handlers don't trigger renders every frame.
   const drag = useRef({ active: false, startX: 0, startLeft: 0, moved: false });
-  // when true, ignore scroll-driven updates so our optimistic flip survives the in-flight smooth scroll.
-  const suppressUpdate = useRef(false);
 
   useEffect(() => {
     const el = scrollerRef.current;
     if (!el) return;
     const update = () => {
-      if (suppressUpdate.current) return;
       setCanLeft(el.scrollLeft > 4);
       setCanRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
     };
@@ -32,31 +34,17 @@ export default function MovieRow({ title, children }: Props) {
   const scrollByPage = (dir: 1 | -1) => {
     const el = scrollerRef.current;
     if (!el) return;
-    const distance = dir * el.clientWidth * 0.85;
-    const maxScroll = el.scrollWidth - el.clientWidth;
-    const next = Math.max(0, Math.min(maxScroll, el.scrollLeft + distance));
-
-    // optimistic update + suppress the live scroll handler so the in-flight scroll
-    // doesn't keep re-setting canLeft/canRight back to "true" until the scroll completes.
-    setCanLeft(next > 4);
-    setCanRight(next < maxScroll - 4);
-    suppressUpdate.current = true;
-
-    const release = () => {
-      suppressUpdate.current = false;
-    };
-    // modern browsers fire scrollend when a smooth scroll completes; older ones won't, so we also
-    // fall back to a timeout that comfortably covers a smooth scroll's typical duration.
-    el.addEventListener("scrollend", release, { once: true });
-    window.setTimeout(release, 700);
-
-    el.scrollBy({ left: distance, behavior: "smooth" });
+    el.scrollBy({ left: dir * el.clientWidth * 0.85, behavior: "smooth" });
   };
 
   const onMouseDown = (e: MouseEvent<HTMLDivElement>) => {
     const el = scrollerRef.current;
     if (!el) return;
-    e.preventDefault();
+    // skip if the user clicked the chevron buttons — they're inside the
+    // relative parent but outside the scroller itself, so this shouldn't
+    // matter, but defending against future restructure.
+    if ((e.target as HTMLElement).closest("[data-row-control]")) return;
+    e.preventDefault(); // prevent native image/text drag
     drag.current = { active: true, startX: e.pageX, startLeft: el.scrollLeft, moved: false };
     el.style.cursor = "grabbing";
   };
@@ -66,7 +54,12 @@ export default function MovieRow({ title, children }: Props) {
     const el = scrollerRef.current;
     if (!el) return;
     const dx = e.pageX - drag.current.startX;
-    if (Math.abs(dx) > 4) drag.current.moved = true;
+    // 5px threshold — small enough that any deliberate drag triggers it,
+    // large enough that a slightly-shaky click isn't mistaken for a drag.
+    if (Math.abs(dx) > 5 && !drag.current.moved) {
+      drag.current.moved = true;
+      setIsDragging(true); // adds pointer-events-none class to descendants
+    }
     el.scrollLeft = drag.current.startLeft - dx;
   };
 
@@ -75,17 +68,19 @@ export default function MovieRow({ title, children }: Props) {
     drag.current.active = false;
     const el = scrollerRef.current;
     if (el) el.style.cursor = "";
-  };
 
-  const onClickCapture = (e: MouseEvent<HTMLDivElement>) => {
     if (drag.current.moved) {
-      e.stopPropagation();
-      drag.current.moved = false;
+      // keep pointer-events disabled for one tick so the synthetic click
+      // event that follows mouseup is hit-tested against an inert element
+      // and discarded by the browser. without this, the click bubbles to
+      // the <Link> and react-router navigates to whatever card was under
+      // the cursor at release time.
+      setTimeout(() => {
+        setIsDragging(false);
+        drag.current.moved = false;
+      }, 0);
     }
   };
-
-  const arrowBase =
-    "absolute top-1/2 -translate-y-1/2 cursor-pointer rounded-full bg-black/70 p-2 text-white backdrop-blur-sm transition-opacity duration-500 hover:bg-black/90";
 
   return (
     <section className="mb-14">
@@ -96,58 +91,57 @@ export default function MovieRow({ title, children }: Props) {
         <span className="mt-1 block h-px w-8 bg-[var(--gold-soft)]" aria-hidden />
       </div>
 
-      <div
-        className="relative"
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => {
-          setHovered(false);
-          endDrag();
-        }}
-      >
+      <div className="relative">
         <div
           ref={scrollerRef}
           onMouseDown={onMouseDown}
           onMouseMove={onMouseMove}
           onMouseUp={endDrag}
-          onClickCapture={onClickCapture}
-          className="no-scrollbar flex cursor-grab select-none gap-4 overflow-x-auto px-1 py-3"
+          onMouseLeave={endDrag}
+          className={`no-scrollbar flex cursor-grab select-none snap-x snap-mandatory gap-4 overflow-x-auto pb-2 ${
+            // the arbitrary selector targets all descendants so any link/button
+            // inside the row becomes click-inert while dragging.
+            isDragging ? "[&_*]:!pointer-events-none" : ""
+          }`}
         >
           {children}
         </div>
 
-        <div
-          aria-hidden
-          className={`pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[var(--background)] to-transparent transition-opacity duration-500 ${
-            canLeft ? "opacity-100" : "opacity-0"
-          }`}
-        />
-        <div
-          aria-hidden
-          className={`pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[var(--background)] to-transparent transition-opacity duration-500 ${
-            canRight ? "opacity-100" : "opacity-0"
-          }`}
-        />
+        {canLeft && (
+          <div
+            className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[var(--background)] to-transparent"
+            aria-hidden
+          />
+        )}
+        {canRight && (
+          <div
+            className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[var(--background)] to-transparent"
+            aria-hidden
+          />
+        )}
 
-        <button
-          type="button"
-          onClick={() => scrollByPage(-1)}
-          aria-label="Scroll left"
-          className={`${arrowBase} left-1 ${
-            hovered && canLeft ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-          }`}
-        >
-          <ChevronLeft size={20} />
-        </button>
-        <button
-          type="button"
-          onClick={() => scrollByPage(1)}
-          aria-label="Scroll right"
-          className={`${arrowBase} right-1 ${
-            hovered && canRight ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-          }`}
-        >
-          <ChevronRight size={20} />
-        </button>
+        {canLeft && (
+          <button
+            type="button"
+            data-row-control
+            onClick={() => scrollByPage(-1)}
+            aria-label="Scroll left"
+            className="absolute left-1 top-1/2 -translate-y-1/2 cursor-pointer rounded-full bg-black/70 p-2 text-white backdrop-blur-sm transition-colors hover:bg-black/90"
+          >
+            <ChevronLeft size={20} />
+          </button>
+        )}
+        {canRight && (
+          <button
+            type="button"
+            data-row-control
+            onClick={() => scrollByPage(1)}
+            aria-label="Scroll right"
+            className="absolute right-1 top-1/2 -translate-y-1/2 cursor-pointer rounded-full bg-black/70 p-2 text-white backdrop-blur-sm transition-colors hover:bg-black/90"
+          >
+            <ChevronRight size={20} />
+          </button>
+        )}
       </div>
     </section>
   );

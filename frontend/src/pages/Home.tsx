@@ -3,14 +3,20 @@ import { useEffect, useRef, useState, type ReactElement } from "react";
 import MovieCard from "@/components/MovieCard";
 import MovieCardSkeleton from "@/components/MovieCardSkeleton";
 import MovieRow from "@/components/MovieRow";
+import UserPicker from "@/components/UserPicker";
 import { Input } from "@/components/ui/input";
 import { api, type Movie } from "@/api";
 
-// fixed per-card width inside a row so the carousel doesn't shrink cards on overflow.
 const ROW_ITEM = "w-44 shrink-0 sm:w-52 md:w-56";
 
 const INITIAL_ROWS = 4;
 const ROWS_PER_BATCH = 3;
+// number of placeholder rows shown during initial load. matches the "top
+// rated + first few genres" shape so the loading state previews what's
+// actually about to appear.
+const SKELETON_ROW_COUNT = 4;
+const SKELETON_CARDS_PER_ROW = 8;
+const SKELETON_ROW_TITLES = ["Top Rated", "Drama", "Crime", "Sci-Fi"];
 
 export default function Home(): ReactElement {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -37,7 +43,6 @@ export default function Home(): ReactElement {
     };
   }, []);
 
-  // "/" focuses the search box anywhere on the page.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "/" && document.activeElement !== searchRef.current) {
@@ -52,13 +57,11 @@ export default function Home(): ReactElement {
   const q = query.trim().toLowerCase();
   const filtered = q ? movies.filter((m) => m.title.toLowerCase().includes(q)) : null;
 
-  // top-rated row: highest averages first, capped so the row isn't huge.
   const topRated = [...movies]
     .filter((m) => m.average_rating !== null)
     .sort((a, b) => (b.average_rating ?? 0) - (a.average_rating ?? 0))
     .slice(0, 12);
 
-  // group by genre; sort genres by movie count so denser categories lead.
   const byGenre = new Map<string, Movie[]>();
   for (const m of movies) {
     if (!m.genre) continue;
@@ -68,10 +71,8 @@ export default function Home(): ReactElement {
   }
   const genres = [...byGenre.keys()].sort((a, b) => byGenre.get(b)!.length - byGenre.get(a)!.length);
 
-  // total rows = top rated (if any) + genre rows
   const totalRows = (topRated.length > 0 ? 1 : 0) + genres.length;
 
-  // progressive row reveal via intersection observer on a sentinel below the visible rows.
   useEffect(() => {
     if (status !== "ready" || filtered !== null) return;
     if (visibleRowCount >= totalRows) return;
@@ -89,16 +90,16 @@ export default function Home(): ReactElement {
     return () => io.disconnect();
   }, [status, filtered, visibleRowCount, totalRows]);
 
-  // figure out how many genre rows to render: subtract 1 for the top rated row if present.
   const genreRowsToShow = topRated.length > 0 ? Math.max(0, visibleRowCount - 1) : visibleRowCount;
   const allRowsVisible = visibleRowCount >= totalRows;
 
   return (
     <main className="mx-auto max-w-7xl px-6 py-12">
-      <header className="mb-12">
+      <header className="mb-12 flex flex-wrap items-end justify-between gap-4">
         <h1 className="text-5xl font-medium tracking-tight sm:text-6xl" style={{ fontFamily: "var(--font-display)" }}>
           Movie Reviews
         </h1>
+        <UserPicker />
       </header>
 
       <div className="mb-12">
@@ -130,13 +131,17 @@ export default function Home(): ReactElement {
       </div>
 
       {status === "loading" && (
-        <MovieRow title="Loading">
-          {Array.from({ length: 8 }, (_, i) => (
-            <div key={i} className={ROW_ITEM}>
-              <MovieCardSkeleton />
-            </div>
+        <>
+          {Array.from({ length: SKELETON_ROW_COUNT }, (_, rowIdx) => (
+            <MovieRow key={`skeleton-${rowIdx}`} title={SKELETON_ROW_TITLES[rowIdx] ?? ""}>
+              {Array.from({ length: SKELETON_CARDS_PER_ROW }, (_, cardIdx) => (
+                <div key={cardIdx} className={ROW_ITEM}>
+                  <MovieCardSkeleton />
+                </div>
+              ))}
+            </MovieRow>
           ))}
-        </MovieRow>
+        </>
       )}
 
       {status === "error" && (
@@ -166,7 +171,6 @@ export default function Home(): ReactElement {
             <MovieRow title="Top Rated">
               {topRated.map((m, i) => (
                 <div key={m.id} className={ROW_ITEM}>
-                  {/* top rated mixes genres, so the badge stays useful here */}
                   <MovieCard movie={m} index={i} />
                 </div>
               ))}
@@ -176,7 +180,6 @@ export default function Home(): ReactElement {
             <MovieRow key={g} title={g}>
               {byGenre.get(g)!.map((m, i) => (
                 <div key={m.id} className={ROW_ITEM}>
-                  {/* genre is implied by the row title — hide the redundant badge */}
                   <MovieCard movie={m} index={i} hideGenre />
                 </div>
               ))}

@@ -15,7 +15,10 @@ let movies: Omit<Movie, "average_rating" | "review_count">[] = structuredClone(
 );
 let reviews: Review[] = structuredClone(seed.reviews);
 
-const wait = () => new Promise((r) => setTimeout(r, 120)); // feel a real request
+// 350ms feels like a slow-ish real network request without becoming annoying.
+// adjust here if you want the dev experience snappier (try 150) or want to
+// stress-test the loading state (try 800). production hits the real backend.
+const wait = () => new Promise((r) => setTimeout(r, 350));
 const nextId = (rows: { id: number }[]) => Math.max(0, ...rows.map((r) => r.id)) + 1;
 
 function withAggregates(m: (typeof movies)[number]): Movie {
@@ -49,7 +52,6 @@ export const mockApi: Api = {
   },
   async createMovie(input) {
     await wait();
-    // new movies have no poster yet; production backend may later accept a poster_url field.
     const m = { id: nextId(movies), ...input, poster_url: null, created_at: new Date().toISOString() };
     movies = [...movies, m];
     return withAggregates(m);
@@ -65,7 +67,7 @@ export const mockApi: Api = {
     await wait();
     if (!movies.some((m) => m.id === id)) throw new ApiError(404, "Movie not found");
     movies = movies.filter((m) => m.id !== id);
-    reviews = reviews.filter((r) => r.movie_id !== id); // cascade, matches the schema
+    reviews = reviews.filter((r) => r.movie_id !== id);
   },
 
   async getUsers() {
@@ -83,7 +85,6 @@ export const mockApi: Api = {
     if (input.rating < 1 || input.rating > 5) throw new ApiError(400, "rating must be between 1 and 5");
     if (!movies.some((m) => m.id === input.movie_id)) throw new ApiError(404, "Movie not found");
     if (!users.some((u) => u.id === input.user_id)) throw new ApiError(404, "User not found");
-    // the uq_user_movie constraint, enforced here so the 409 path is testable.
     if (reviews.some((r) => r.user_id === input.user_id && r.movie_id === input.movie_id))
       throw new ApiError(409, "User has already reviewed this movie");
     const r: Review = { id: nextId(reviews), ...input, created_at: new Date().toISOString() };
