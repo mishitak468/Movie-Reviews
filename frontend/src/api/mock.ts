@@ -52,7 +52,14 @@ export const mockApi: Api = {
   },
   async createMovie(input) {
     await wait();
-    const m = { id: nextId(movies), ...input, poster_url: null, created_at: new Date().toISOString() };
+    const m = {
+      id: nextId(movies),
+      title: input.title,
+      release_year: input.release_year,
+      genre: input.genre,
+      poster_url: input.poster_url ?? null,
+      created_at: new Date().toISOString(),
+    };
     movies = [...movies, m];
     return withAggregates(m);
   },
@@ -60,7 +67,10 @@ export const mockApi: Api = {
     await wait();
     const m = movies.find((x) => x.id === id);
     if (!m) throw new ApiError(404, "Movie not found");
-    Object.assign(m, input);
+    m.title = input.title;
+    m.release_year = input.release_year;
+    m.genre = input.genre;
+    m.poster_url = input.poster_url ?? null;
     return withAggregates(m);
   },
   async deleteMovie(id) {

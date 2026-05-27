@@ -33,7 +33,7 @@ export type Review = {
 
 export type MovieDetail = Movie & { reviews: Review[] };
 
-export type MovieInput = { title: string; release_year: number; genre: string };
+export type MovieInput = { title: string; release_year: number; genre: string; poster_url?: string | null };
 export type ReviewInput = { user_id: number; movie_id: number; rating: number; comment: string };
 export type ReviewUpdate = { rating: number; comment: string };
 

@@ -1,9 +1,18 @@
-import { Search, X } from "lucide-react";
+import { Plus, Search, X } from "lucide-react";
 import { useEffect, useRef, useState, type ReactElement } from "react";
 import MovieCard from "@/components/MovieCard";
 import MovieCardSkeleton from "@/components/MovieCardSkeleton";
+import MovieForm from "@/components/MovieForm";
 import MovieRow from "@/components/MovieRow";
 import UserPicker from "@/components/UserPicker";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { api, type Movie } from "@/api";
 
@@ -20,9 +29,11 @@ const SKELETON_ROW_TITLES = ["Top Rated", "Drama", "Crime", "Sci-Fi"];
 
 export default function Home(): ReactElement {
   const [movies, setMovies] = useState<Movie[]>([]);
+  const [topRated, setTopRated] = useState<Movie[]>([]);
   const [status, setStatus] = useState<"loading" | "error" | "ready">("loading");
   const [query, setQuery] = useState("");
   const [visibleRowCount, setVisibleRowCount] = useState(INITIAL_ROWS);
+  const [showAddDialog, setShowAddDialog] = useState(false);
   const searchRef = useRef<HTMLInputElement>(null);
   const sentinelRef = useRef<HTMLDivElement>(null);
 
@@ -30,9 +41,11 @@ export default function Home(): ReactElement {
     let active = true;
     (async () => {
       try {
-        const data = await api.getMovies();
+        // parallel — the two endpoints are independent server-side.
+        const [allMovies, top] = await Promise.all([api.getMovies(), api.getTopRated()]);
         if (!active) return;
-        setMovies(data);
+        setMovies(allMovies);
+        setTopRated(top.slice(0, 12));
         setStatus("ready");
       } catch {
         if (active) setStatus("error");
@@ -56,11 +69,6 @@ export default function Home(): ReactElement {
 
   const q = query.trim().toLowerCase();
   const filtered = q ? movies.filter((m) => m.title.toLowerCase().includes(q)) : null;
-
-  const topRated = [...movies]
-    .filter((m) => m.average_rating !== null)
-    .sort((a, b) => (b.average_rating ?? 0) - (a.average_rating ?? 0))
-    .slice(0, 12);
 
   const byGenre = new Map<string, Movie[]>();
   for (const m of movies) {
@@ -99,7 +107,18 @@ export default function Home(): ReactElement {
         <h1 className="text-5xl font-medium tracking-tight sm:text-6xl" style={{ fontFamily: "var(--font-display)" }}>
           Movie Reviews
         </h1>
-        <UserPicker />
+        <div className="flex items-center gap-3">
+          <Button
+            type="button"
+            variant="ghost"
+            onClick={() => setShowAddDialog(true)}
+            className="cursor-pointer text-muted-foreground hover:text-white"
+          >
+            <Plus size={16} className="mr-1.5" />
+            Add film
+          </Button>
+          <UserPicker />
+        </div>
       </header>
 
       <div className="mb-12">
@@ -184,6 +203,29 @@ export default function Home(): ReactElement {
           {!allRowsVisible && <div ref={sentinelRef} className="h-1" aria-hidden />}
         </>
       )}
+
+      <Dialog open={showAddDialog} onOpenChange={setShowAddDialog}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Add a film</DialogTitle>
+            <DialogDescription>
+              The new film will appear in its genre row once you save.
+            </DialogDescription>
+          </DialogHeader>
+          <MovieForm
+            mode="create"
+            extraGenres={genres}
+            existingFilms={movies}
+            onSubmit={async (input) => {
+              const created = await api.createMovie(input);
+              // prepend so the new film is the first thing visible at the top of its row.
+              setMovies((prev) => [created, ...prev]);
+              setShowAddDialog(false);
+            }}
+            onCancel={() => setShowAddDialog(false)}
+          />
+        </DialogContent>
+      </Dialog>
     </main>
   );
 }
