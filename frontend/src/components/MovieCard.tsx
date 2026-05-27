@@ -1,9 +1,10 @@
-import { Calendar, Film } from "lucide-react";
+import { Calendar, Check, Film } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import RatingStars from "@/components/RatingStars";
 import { Card } from "@/components/ui/card";
 import { type Movie } from "@/api";
+import { useReviewedMovieIds } from "@/lib/useReviewedMovieIds";
 
 function genreHue(genre: string | null): number {
   if (!genre) return 220;
@@ -18,6 +19,7 @@ export default function MovieCard({ movie, index = 0, hideGenre = false }: Props
   const hue = genreHue(movie.genre);
   const [imgFailed, setImgFailed] = useState(false);
   const showPoster = movie.poster_url && !imgFailed;
+  const reviewed = useReviewedMovieIds().has(movie.id);
 
   return (
     <article className="cine-rise" style={{ animationDelay: `${Math.min(index, 24) * 40}ms` }}>
@@ -53,6 +55,21 @@ export default function MovieCard({ movie, index = 0, hideGenre = false }: Props
           {movie.genre && !hideGenre && (
             <span className="absolute left-3 top-3 rounded-full bg-black/40 px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.15em] backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-0">
               {movie.genre}
+            </span>
+          )}
+
+          {reviewed && (
+            <span
+              className="absolute right-3 top-3 inline-flex items-center overflow-hidden rounded-full bg-black/40 p-1 backdrop-blur-sm transition-all duration-300 group-hover:gap-1.5 group-hover:pr-2.5"
+              aria-label="You have reviewed this film"
+            >
+              <Check size={16} strokeWidth={2.5} className="shrink-0 text-[var(--success)]" />
+              {/* grid 0fr → 1fr animates to content-width without knowing the target size. */}
+              <span className="grid grid-cols-[0fr] transition-[grid-template-columns] duration-300 group-hover:grid-cols-[1fr]">
+                <span className="overflow-hidden whitespace-nowrap text-[10px] font-medium uppercase tracking-[0.15em] text-[var(--success)]">
+                  Reviewed
+                </span>
+              </span>
             </span>
           )}
 

@@ -1,4 +1,4 @@
-import { ArrowLeft, Calendar, Film, MessageSquare, Tag } from "lucide-react";
+import { ArrowLeft, Calendar, Check, Film, MessageSquare, Tag } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import MovieDetailSkeleton from "@/components/MovieDetailSkeleton";
@@ -7,6 +7,7 @@ import ReviewCard from "@/components/ReviewCard";
 import UserPicker from "@/components/UserPicker";
 import WriteReviewForm from "@/components/WriteReviewForm";
 import { useCurrentUser } from "@/lib/useCurrentUser";
+import { notifyReviewsChanged } from "@/lib/useReviewedMovieIds";
 import { ApiError, api, type MovieDetail as MovieDetailT } from "@/api";
 
 export default function MovieDetail() {
@@ -56,6 +57,7 @@ export default function MovieDetail() {
       comment: input.comment,
     });
     await load();
+    notifyReviewsChanged(currentUser.id);
   };
 
   const handleUpdate = async (reviewId: number, input: { rating: number; comment: string }) => {
@@ -66,6 +68,7 @@ export default function MovieDetail() {
   const handleDelete = async (reviewId: number) => {
     await api.deleteReview(reviewId);
     await load();
+    if (currentUser) notifyReviewsChanged(currentUser.id);
   };
 
   if (status === "loading") {
@@ -161,6 +164,12 @@ export default function MovieDetail() {
                 <MessageSquare size={14} />
                 {movie.review_count} {movie.review_count === 1 ? "review" : "reviews"}
               </span>
+              {ownReview && (
+                <span className="flex items-center gap-1.5 text-[var(--success)]">
+                  <Check size={14} strokeWidth={2.5} />
+                  Reviewed
+                </span>
+              )}
             </div>
 
             <RatingStars rating={movie.average_rating} size={20} />
@@ -187,38 +196,33 @@ export default function MovieDetail() {
             </div>
           )}
 
-          {currentUser && ownReview && (
-            <a
-              href={`#review-${ownReview.id}`}
-              className="block rounded-lg border border-white/10 bg-white/[0.02] p-4 text-sm text-muted-foreground transition-colors hover:bg-white/[0.04] hover:text-white"
-            >
-              You’ve already reviewed this — jump to your review to edit it.
-            </a>
-          )}
-
           {movie.reviews.length === 0 && (
             <p className="py-12 text-center text-sm text-muted-foreground">
               No reviews yet. Be the first.
             </p>
           )}
 
-          {[...movie.reviews]
-            .sort((a, b) => {
-              if (currentUser) {
-                if (a.user_id === currentUser.id) return -1;
-                if (b.user_id === currentUser.id) return 1;
-              }
-              return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
-            })
-            .map((review) => (
-              <ReviewCard
-                key={review.id}
-                review={review}
-                isOwner={currentUser?.id === review.user_id}
-                onUpdate={handleUpdate}
-                onDelete={handleDelete}
-              />
-            ))}
+          {movie.reviews.length > 0 && (
+            <div className="divide-y divide-white/5">
+              {[...movie.reviews]
+                .sort((a, b) => {
+                  if (currentUser) {
+                    if (a.user_id === currentUser.id) return -1;
+                    if (b.user_id === currentUser.id) return 1;
+                  }
+                  return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+                })
+                .map((review) => (
+                  <ReviewCard
+                    key={review.id}
+                    review={review}
+                    isOwner={currentUser?.id === review.user_id}
+                    onUpdate={handleUpdate}
+                    onDelete={handleDelete}
+                  />
+                ))}
+            </div>
+          )}
         </section>
       </div>
     </main>

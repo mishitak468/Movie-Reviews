@@ -111,9 +111,9 @@ export default function Home(): ReactElement {
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search films…"
             aria-label="Search films"
-            className="border-white/10 bg-white/[0.03] pl-9 pr-16"
+            className="border-white/10 bg-white/[0.03] pl-9 pr-10"
           />
-          {query ? (
+          {query && (
             <button
               type="button"
               onClick={() => setQuery("")}
@@ -122,10 +122,6 @@ export default function Home(): ReactElement {
             >
               <X size={14} />
             </button>
-          ) : (
-            <kbd className="absolute right-3 top-1/2 -translate-y-1/2 rounded border border-white/10 bg-white/[0.04] px-1.5 py-0.5 text-[10px] text-muted-foreground">
-              /
-            </kbd>
           )}
         </div>
       </div>

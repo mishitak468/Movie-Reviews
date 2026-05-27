@@ -1,7 +1,8 @@
 import { Pencil, Trash2 } from "lucide-react";
 import { useState } from "react";
-import WriteReviewForm from "@/components/WriteReviewForm";
 import RatingStars from "@/components/RatingStars";
+import UserAvatar from "@/components/UserAvatar";
+import WriteReviewForm from "@/components/WriteReviewForm";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -44,68 +45,64 @@ export default function ReviewCard({ review, isOwner, onUpdate, onDelete }: Prop
   };
 
   return (
-    <article
-      id={`review-${review.id}`}
-      className="group rounded-lg border border-white/5 bg-white/[0.02] p-5 transition-colors hover:border-white/10"
-    >
-      <header className="mb-3 flex items-start justify-between gap-3">
-        <div className="space-y-1">
-          <div className="flex items-center gap-2 text-sm">
-            <span className="font-medium">{review.username ?? `user #${review.user_id}`}</span>
-            {isOwner && (
-              <span className="rounded-full bg-[var(--gold)]/15 px-2 py-0.5 text-[10px] uppercase tracking-wider text-[var(--gold)]">
-                You
-              </span>
-            )}
-          </div>
+    <article id={`review-${review.id}`} className="flex gap-3 py-5 first:pt-0 sm:gap-4">
+      <UserAvatar username={review.username} userId={review.user_id} size={40} />
+
+      <div className="min-w-0 flex-1">
+        <header className="flex flex-wrap items-center gap-x-2 gap-y-1">
+          <span className="text-sm font-medium">{review.username ?? `user #${review.user_id}`}</span>
+          {isOwner && (
+            <span className="rounded-full bg-[var(--success)]/15 px-2 py-0.5 text-[10px] font-medium uppercase tracking-[0.15em] text-[var(--success)]">
+              You
+            </span>
+          )}
+          <span className="text-xs text-muted-foreground" aria-hidden>·</span>
           <time className="text-xs text-muted-foreground">{formatDate(review.created_at)}</time>
-        </div>
-        <RatingStars rating={review.rating} size={14} />
-      </header>
+          <div className="ml-auto">
+            <RatingStars rating={review.rating} size={13} />
+          </div>
+        </header>
 
-      {review.comment && (
-        <p className="whitespace-pre-line text-sm leading-relaxed text-white/80">{review.comment}</p>
-      )}
+        {!editing && review.comment && (
+          <p className="mt-2 whitespace-pre-line text-sm leading-relaxed text-white/85">{review.comment}</p>
+        )}
 
-      {isOwner && !editing && (
-        <footer className="mt-4 flex items-center gap-2 opacity-0 transition-opacity group-hover:opacity-100">
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={() => setEditing(true)}
-            className="h-7 cursor-pointer text-xs text-muted-foreground hover:text-white"
-          >
-            <Pencil size={12} className="mr-1.5" />
-            Edit
-          </Button>
-          <Button
-            type="button"
-            variant="ghost"
-            size="sm"
-            onClick={() => setConfirmingDelete(true)}
-            className="h-7 cursor-pointer text-xs text-muted-foreground hover:text-red-300"
-          >
-            <Trash2 size={12} className="mr-1.5" />
-            Delete
-          </Button>
-        </footer>
-      )}
+        {isOwner && !editing && (
+          <div className="mt-2 flex items-center gap-1">
+            <button
+              type="button"
+              onClick={() => setEditing(true)}
+              className="flex cursor-pointer items-center gap-1.5 rounded-md px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-white/5 hover:text-white"
+            >
+              <Pencil size={12} />
+              Edit
+            </button>
+            <button
+              type="button"
+              onClick={() => setConfirmingDelete(true)}
+              className="flex cursor-pointer items-center gap-1.5 rounded-md px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-white/5 hover:text-red-300"
+            >
+              <Trash2 size={12} />
+              Delete
+            </button>
+          </div>
+        )}
 
-      {editing && (
-        <div className="mt-4 border-t border-white/5 pt-4">
-          <WriteReviewForm
-            mode="edit"
-            initialRating={review.rating}
-            initialComment={review.comment ?? ""}
-            onSubmit={async (input) => {
-              await onUpdate(review.id, input);
-              setEditing(false);
-            }}
-            onCancel={() => setEditing(false)}
-          />
-        </div>
-      )}
+        {editing && (
+          <div className="mt-3">
+            <WriteReviewForm
+              mode="edit"
+              initialRating={review.rating}
+              initialComment={review.comment ?? ""}
+              onSubmit={async (input) => {
+                await onUpdate(review.id, input);
+                setEditing(false);
+              }}
+              onCancel={() => setEditing(false)}
+            />
+          </div>
+        )}
+      </div>
 
       <Dialog open={confirmingDelete} onOpenChange={setConfirmingDelete}>
         <DialogContent>
