@@ -49,7 +49,8 @@ export const mockApi: Api = {
   },
   async createMovie(input) {
     await wait();
-    const m = { id: nextId(movies), ...input, created_at: new Date().toISOString() };
+    // new movies have no poster yet; production backend may later accept a poster_url field.
+    const m = { id: nextId(movies), ...input, poster_url: null, created_at: new Date().toISOString() };
     movies = [...movies, m];
     return withAggregates(m);
   },

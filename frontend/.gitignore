@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+enrich_posters.py
+build_movies_sql.py
+expand_reviews.py
+restore_long_reviews.py

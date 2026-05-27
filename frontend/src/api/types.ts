@@ -12,6 +12,7 @@ export type Movie = {
   title: string;
   release_year: number;
   genre: string | null;
+  poster_url: string | null; // tmdb cdn url, nullable when no poster has been resolved.
   created_at: string;
   // computed server-side. present on list + detail; null when no reviews.
   average_rating: number | null;
