@@ -1,0 +1,2428 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "alice_jones",
+      "email": "alice@example.com",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 2,
+      "username": "bob_smith",
+      "email": "bob@example.com",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 3,
+      "username": "charlie_brown",
+      "email": "charlie@example.com",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 4,
+      "username": "dana_white",
+      "email": "dana@example.com",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 5,
+      "username": "evan_wright",
+      "email": "evan@example.com",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 6,
+      "username": "fiona_gallagher",
+      "email": "fiona@example.com",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 7,
+      "username": "george_cloney",
+      "email": "george@example.com",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 8,
+      "username": "hannah_b",
+      "email": "hannah@example.com",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 9,
+      "username": "ian_malcolm",
+      "email": "ian@example.com",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 10,
+      "username": "julia_roberts",
+      "email": "julia@example.com",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 11,
+      "username": "kevin_bacon",
+      "email": "kevin@example.com",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 12,
+      "username": "lana_del",
+      "email": "lana@example.com",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 13,
+      "username": "marcus_aurelius",
+      "email": "marcus@example.com",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 14,
+      "username": "nina_simone",
+      "email": "nina@example.com",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 15,
+      "username": "oscar_wilde",
+      "email": "oscar@example.com",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 16,
+      "username": "penelope_c",
+      "email": "penelope@example.com",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 17,
+      "username": "quentin_t",
+      "email": "quentin@example.com",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 18,
+      "username": "rachel_green",
+      "email": "rachel@example.com",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 19,
+      "username": "sam_wilson",
+      "email": "sam@example.com",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 20,
+      "username": "tina_turner",
+      "email": "tina@example.com",
+      "created_at": "2026-05-27T11:13:00Z"
+    }
+  ],
+  "movies": [
+    {
+      "id": 1,
+      "title": "The Shawshank Redemption",
+      "release_year": 1994,
+      "genre": "Drama",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": 4,
+      "review_count": 1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg"
+    },
+    {
+      "id": 2,
+      "title": "The Godfather",
+      "release_year": 1972,
+      "genre": "Crime",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg"
+    },
+    {
+      "id": 3,
+      "title": "The Dark Knight",
+      "release_year": 2008,
+      "genre": "Action",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": 4,
+      "review_count": 1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
+    },
+    {
+      "id": 4,
+      "title": "The Godfather Part II",
+      "release_year": 1974,
+      "genre": "Crime",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/hek3koDUyRQk7FIhPXsa6mT2Zc3.jpg"
+    },
+    {
+      "id": 5,
+      "title": "12 Angry Men",
+      "release_year": 1957,
+      "genre": "Drama",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": 5,
+      "review_count": 1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/zhG3vKWyDRaZYoaww1UVAi29T9h.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Schindler's List",
+      "release_year": 1993,
+      "genre": "Biography",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg"
+    },
+    {
+      "id": 7,
+      "title": "The Lord of the Rings: The Return of the King",
+      "release_year": 2003,
+      "genre": "Fantasy",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg"
+    },
+    {
+      "id": 8,
+      "title": "Pulp Fiction",
+      "release_year": 1994,
+      "genre": "Crime",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": 3,
+      "review_count": 1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/vQWk5YBFWF4bZaofAbv0tShwBvQ.jpg"
+    },
+    {
+      "id": 9,
+      "title": "The Lord of the Rings: The Fellowship of the Ring",
+      "release_year": 2001,
+      "genre": "Fantasy",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": 5,
+      "review_count": 1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg"
+    },
+    {
+      "id": 10,
+      "title": "Il Buono, Il Brutto, Il Cattivo",
+      "release_year": 1966,
+      "genre": "Western",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": 5,
+      "review_count": 1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/bX2xnavhMYjWDoZp1VM6VnU1xwe.jpg"
+    },
+    {
+      "id": 11,
+      "title": "Fight Club",
+      "release_year": 1999,
+      "genre": "Drama",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/jSziioSwPVrOy9Yow3XhWIBDjq1.jpg"
+    },
+    {
+      "id": 12,
+      "title": "Forrest Gump",
+      "release_year": 1994,
+      "genre": "Drama",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": 2,
+      "review_count": 1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/Cw4hIUIAmSYfK9QfaUW5igp9La.jpg"
+    },
+    {
+      "id": 13,
+      "title": "Inception",
+      "release_year": 2010,
+      "genre": "Sci-Fi",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": 1,
+      "review_count": 1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/xlaY2zyzMfkhk0HSC5VUwzoZPU1.jpg"
+    },
+    {
+      "id": 14,
+      "title": "The Lord of the Rings: The Two Towers",
+      "release_year": 2002,
+      "genre": "Fantasy",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": 4,
+      "review_count": 1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/5VTN0pR8gcqV3EPUHHfMGnJYN9L.jpg"
+    },
+    {
+      "id": 15,
+      "title": "Star Wars: Episode V - The Empire Strikes Back",
+      "release_year": 1980,
+      "genre": "Sci-Fi",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": 2,
+      "review_count": 1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/nNAeTmF4CtdSgMDplXTDPOpYzsX.jpg"
+    },
+    {
+      "id": 16,
+      "title": "The Matrix",
+      "release_year": 1999,
+      "genre": "Sci-Fi",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/aOIuZAjPaRIE6CMzbazvcHuHXDc.jpg"
+    },
+    {
+      "id": 17,
+      "title": "GoodFellas",
+      "release_year": 1990,
+      "genre": "Biography",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/9OkCLM73MIU2CrKZbqiT8Ln1wY2.jpg"
+    },
+    {
+      "id": 18,
+      "title": "One Flew Over the Cuckoo's Nest",
+      "release_year": 1975,
+      "genre": "Drama",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": 1,
+      "review_count": 1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/kjWsMh72V6d8KRLV4EOoSJLT1H7.jpg"
+    },
+    {
+      "id": 19,
+      "title": "Seven Samurai",
+      "release_year": 1954,
+      "genre": "Action",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/lOMGc8bnSwQhS4XyE1S99uH8NXf.jpg"
+    },
+    {
+      "id": 20,
+      "title": "Se7en",
+      "release_year": 1995,
+      "genre": "Crime",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/191nKfP0ehp3uIvWqgPbFmI4lv9.jpg"
+    },
+    {
+      "id": 21,
+      "title": "The Silence of the Lambs",
+      "release_year": 1991,
+      "genre": "Thriller",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": 5,
+      "review_count": 1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/uS9m8OBk1A8eM9I042bx8XXpqAq.jpg"
+    },
+    {
+      "id": 22,
+      "title": "City of God",
+      "release_year": 2002,
+      "genre": "Crime",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/k7eYdWvhYQyRQoU2TB2A2Xu2TfD.jpg"
+    },
+    {
+      "id": 23,
+      "title": "It's a Wonderful Life",
+      "release_year": 1946,
+      "genre": "Drama",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/bSqt9rhDZx1Q7UZ86dBPKdNomp2.jpg"
+    },
+    {
+      "id": 24,
+      "title": "Life Is Beautiful",
+      "release_year": 1997,
+      "genre": "Comedy",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/6tEJnof1DKWPnl5lzkjf0FVv7oB.jpg"
+    },
+    {
+      "id": 25,
+      "title": "Star Wars: Episode IV - A New Hope",
+      "release_year": 1977,
+      "genre": "Sci-Fi",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": 2,
+      "review_count": 1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg"
+    },
+    {
+      "id": 26,
+      "title": "Saving Private Ryan",
+      "release_year": 1998,
+      "genre": "Drama",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/uqx37cS8cpHg8U35f9U5IBlrCV3.jpg"
+    },
+    {
+      "id": 27,
+      "title": "Spirited Away",
+      "release_year": 2001,
+      "genre": "Animation",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": 4,
+      "review_count": 1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg"
+    },
+    {
+      "id": 28,
+      "title": "The Green Mile",
+      "release_year": 1999,
+      "genre": "Crime",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/8VG8fDNiy50H4FedGwdSVUPoaJe.jpg"
+    },
+    {
+      "id": 29,
+      "title": "Interstellar",
+      "release_year": 2014,
+      "genre": "Sci-Fi",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg"
+    },
+    {
+      "id": 30,
+      "title": "Parasite",
+      "release_year": 2019,
+      "genre": "Thriller",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg"
+    },
+    {
+      "id": 31,
+      "title": "Léon: The Professional",
+      "release_year": 1994,
+      "genre": "Action",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/bxB2q91nKYp8JNzqE7t7TWBVupB.jpg"
+    },
+    {
+      "id": 32,
+      "title": "The Usual Suspects",
+      "release_year": 1995,
+      "genre": "Mystery",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": 4,
+      "review_count": 1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/99X2SgyFunJFXGAYnDv3sb9pnUD.jpg"
+    },
+    {
+      "id": 33,
+      "title": "The Lion King",
+      "release_year": 1994,
+      "genre": "Animation",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": 3,
+      "review_count": 1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/sKCr78MXSLixwmZ8DyJLrpMsd15.jpg"
+    },
+    {
+      "id": 34,
+      "title": "The Pianist",
+      "release_year": 2002,
+      "genre": "Biography",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/2hFvxCCWrTmCYwfy7yum0GKRi3Y.jpg"
+    },
+    {
+      "id": 35,
+      "title": "Terminator 2: Judgment Day",
+      "release_year": 1991,
+      "genre": "Action",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/jFTVD4XoWQTcg7wdyJKa8PEds5q.jpg"
+    },
+    {
+      "id": 36,
+      "title": "Back to the Future",
+      "release_year": 1985,
+      "genre": "Adventure",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/vN5B5WgYscRGcQpVhHl6p9DDTP0.jpg"
+    },
+    {
+      "id": 37,
+      "title": "American History X",
+      "release_year": 1998,
+      "genre": "Drama",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/x2drgoXYZ8484lqyDj7L1CEVR4T.jpg"
+    },
+    {
+      "id": 38,
+      "title": "Modern Times",
+      "release_year": 1936,
+      "genre": "Comedy",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/7uoiKOEjxBBW0AgDGQWrlfGQ90w.jpg"
+    },
+    {
+      "id": 39,
+      "title": "Gladiator",
+      "release_year": 2000,
+      "genre": "Action",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/wN2xWp1eIwCKOD0BHTcErTBv1Uq.jpg"
+    },
+    {
+      "id": 40,
+      "title": "Psycho",
+      "release_year": 1960,
+      "genre": "Horror",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": 4,
+      "review_count": 1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/yz4QVqPx3h1hD1DfqqQkCq3rmxW.jpg"
+    },
+    {
+      "id": 41,
+      "title": "The Departed",
+      "release_year": 2006,
+      "genre": "Crime",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/nT97ifVT2J1yMQmeq20Qblg61T.jpg"
+    },
+    {
+      "id": 42,
+      "title": "City Lights",
+      "release_year": 1931,
+      "genre": "Comedy",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": 5,
+      "review_count": 1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/bXNvzjULc9jrOVhGfjcc64uKZmZ.jpg"
+    },
+    {
+      "id": 43,
+      "title": "Whiplash",
+      "release_year": 2014,
+      "genre": "Drama",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/7fn624j5lj3xTme2SgiLCeuedmO.jpg"
+    },
+    {
+      "id": 44,
+      "title": "The Prestige",
+      "release_year": 2006,
+      "genre": "Mystery",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/Ag2B2KHKQPukjH7WutmgnnSNurZ.jpg"
+    },
+    {
+      "id": 45,
+      "title": "The Intouchables",
+      "release_year": 2011,
+      "genre": "Biography",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": 5,
+      "review_count": 1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/1QU7HKgsQbGpzsJbJK4pAVQV9F5.jpg"
+    },
+    {
+      "id": 46,
+      "title": "Casablanca",
+      "release_year": 1942,
+      "genre": "Romance",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/lGCEKlJo2CnWydQj7aamY7s1S7Q.jpg"
+    },
+    {
+      "id": 47,
+      "title": "Once Upon a Time in the West",
+      "release_year": 1968,
+      "genre": "Western",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/qbYgqOczabWNn2XKwgMtVrntD6P.jpg"
+    },
+    {
+      "id": 48,
+      "title": "Rear Window",
+      "release_year": 1954,
+      "genre": "Mystery",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/ILVF0eJxHMddjxeQhswFtpMtqx.jpg"
+    },
+    {
+      "id": 49,
+      "title": "Alien",
+      "release_year": 1979,
+      "genre": "Sci-Fi",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": null,
+      "review_count": 0,
+      "poster_url": "https://image.tmdb.org/t/p/w500/vfrQk5IPloGg1v9Rzbh2Eg3VGyM.jpg"
+    },
+    {
+      "id": 50,
+      "title": "Cinema Paradiso",
+      "release_year": 1988,
+      "genre": "Drama",
+      "created_at": "2026-05-27T11:13:00Z",
+      "average_rating": 5,
+      "review_count": 1,
+      "poster_url": "https://image.tmdb.org/t/p/w500/gCI2AeMV4IHSewhJkzsur5MEp6R.jpg"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "user_id": 1,
+      "movie_id": 10,
+      "rating": 5,
+      "comment": "Honestly, this is one of the greatest cinematic achievements I have ever witnessed. The cinematography utilizes natural lighting in a way that makes every single frame look like a Renaissance painting.\n\nThe pacing is deliberate but completely necessary to establish the atmospheric dread. The lead actor gives a career-defining performance that will undoubtedly sweep awards season. My only minor critique is that the second act drags slightly, but the explosive finale more than makes up for it. An absolute must-watch on the biggest screen possible!",
+      "username": "alice_jones",
+      "movie_title": "Il Buono, Il Brutto, Il Cattivo",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 2,
+      "user_id": 2,
+      "movie_id": 14,
+      "rating": 4,
+      "comment": "A incredibly strong entry into the director's filmography, though it doesn't quite reach the heights of their earlier work from the late 90s.\n\nWhat works beautifully here is the sound design and the haunting orchestral score—it keeps you on the edge of your seat even during standard conversational scenes. However, the script leans a bit too heavily on exposition in the middle section, treating the audience like they can't follow the structural mystery. Still, the chemistry between the two leads carries the emotional weight effortlessly. Solid 4 out of 5.",
+      "username": "bob_smith",
+      "movie_title": "The Lord of the Rings: The Two Towers",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 3,
+      "user_id": 3,
+      "movie_id": 25,
+      "rating": 2,
+      "comment": "I am genuinely baffled by the rave reviews this is getting across social media. The concept in the trailer looked incredibly promising, but the execution is completely messy.\n\nThe film suffers from a massive identity crisis—it can't decide if it wants to be a psychological thriller, a sci-fi mystery, or a family drama, failing to achieve any of them cleanly. Characters make completely irrational decisions just to push the plot forward, and the dialogue feels like it was generated by an AI trying to sound profound. Two stars solely for the impressive visual effects in the opening sequence.",
+      "username": "charlie_brown",
+      "movie_title": "Star Wars: Episode IV - A New Hope",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 4,
+      "user_id": 4,
+      "movie_id": 5,
+      "rating": 5,
+      "comment": "Masterful storytelling from beginning to end. It is rare to see a movie that runs over two and a half hours maintain such a tight, vice-grip hold on the audience's attention span.\n\nThe editing is razor-sharp, cutting between the parallel timelines seamlessly without ever causing confusion. The thematic exploration of grief and generational trauma is handled with incredible nuance and maturity, avoiding cheap Hollywood melodrama. I found myself tearing up in the final ten minutes. Do not sleep on this masterpiece.",
+      "username": "dana_white",
+      "movie_title": "12 Angry Men",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 5,
+      "user_id": 5,
+      "movie_id": 18,
+      "rating": 1,
+      "comment": "This was an absolute chore to get through. I came in with incredibly high expectations given the star-studded cast, but it turned out to be a massive waste of talent and production budget.\n\nThe script is filled with utterly insufferable, unlikable characters that you actively root against, and the humor falls completely flat in every scene. To make matters worse, the lighting is so aggressively dim and muddy that I could barely tell what was happening during the third-act action sequences. Avoid this at all costs—save your time and money.",
+      "username": "evan_wright",
+      "movie_title": "One Flew Over the Cuckoo's Nest",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 6,
+      "user_id": 6,
+      "movie_id": 32,
+      "rating": 4,
+      "comment": "A very pleasant surprise! I went into the theater expecting a standard, predictable summer blockbuster, but what I got was a clever, subverted take on the entire genre.\n\nThe writing is exceptionally witty, packed with meta-commentary that keeps the narrative feeling fresh and self-aware. The practical effects look leagues better than the lazy CGI we usually see these days. It loses a little bit of steam during the generic villain showdown at the end, but the journey getting there is an absolute blast.",
+      "username": "fiona_gallagher",
+      "movie_title": "The Usual Suspects",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 7,
+      "user_id": 7,
+      "movie_id": 45,
+      "rating": 5,
+      "comment": "Some movies are meant to be watched, while others are meant to be experienced. This falls squarely into the latter category.\n\nThe director crafts a mesmerizing, hypnotic atmosphere that pulls you directly into the environment. The subtextual layers regarding societal decay and isolation are brilliant, requiring a second viewing to fully unpack everything. The performance by the lead actress is nothing short of mesmerizing—she commands the screen without saying a word. A triumph of modern filmmaking.",
+      "username": "george_cloney",
+      "movie_title": "The Intouchables",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 8,
+      "user_id": 8,
+      "movie_id": 8,
+      "rating": 3,
+      "comment": "An incredibly average film that is completely elevated by its phenomenal third act. For the first hour and a half, I was checking my watch constantly due to the agonizingly slow pacing and redundant subplots that went nowhere.\n\nBut once the major twist happens, the film kicks into overdrive and delivers a spectacular, mind-bending conclusion. If you have the patience to sit through a tedious setup, the payoff is genuinely rewarding. Otherwise, wait until it streams and watch it on 1.5x speed.",
+      "username": "hannah_b",
+      "movie_title": "Pulp Fiction",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 9,
+      "user_id": 9,
+      "movie_id": 21,
+      "rating": 5,
+      "comment": "Absolute perfection. From the very first tracking shot to the final haunting close-up, the direction is utterly flawless.\n\nThe script is incredibly tight, with every single line of dialogue serving a dual purpose for character development and plot progression. The production design perfectly captures the gritty, historical era, making the setting feel like its own living character. It's rare to see a movie hit every single target it aims for so precisely. This is instantly going into my top ten favorite films of all time.",
+      "username": "ian_malcolm",
+      "movie_title": "The Silence of the Lambs",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 10,
+      "user_id": 10,
+      "movie_id": 15,
+      "rating": 2,
+      "comment": "A classic case of style over substance. There is no denying that the cinematography and neon color palettes are absolutely stunning to look at—every frame looks like a high-fashion music video.\n\nUnfortunately, there is almost zero plot holding those pretty pictures together. The characters are completely hollow archetypes with no clear motivations, and the central mystery wraps up with an incredibly lazy, unearned deus ex machina. It's an enjoyable visual showcase, but a total failure as a narrative piece.",
+      "username": "julia_roberts",
+      "movie_title": "Star Wars: Episode V - The Empire Strikes Back",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 11,
+      "user_id": 11,
+      "movie_id": 40,
+      "rating": 4,
+      "comment": "This film does a fantastic job handling a very sensitive historical event without feeling exploitative or overly sanitized.\n\nThe performances across the board are deeply grounded, capturing the raw human emotion of the situation beautifully. The director shows incredible restraint by focusing on the quiet, intimate moments rather than relying on massive, sensationalized set pieces. My only critique is that the ending felt slightly abrupt, leaving a few minor character arcs unresolved. Highly recommended.",
+      "username": "kevin_bacon",
+      "movie_title": "Psycho",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 12,
+      "user_id": 12,
+      "movie_id": 13,
+      "rating": 1,
+      "comment": "I want my two hours back. This movie is an incoherent, bloated disaster that feels like it was pieced together by a committee of studio executives looking at a trend spreadsheet.\n\nThe pacing is completely erratic, jumping violently between slapstick comedy and dark, gritty violence without any tonal connective tissue. The soundtrack is incredibly distracting, blasting pop songs over dramatic scenes where they completely ruin the emotional gravity. A total mess from start to finish.",
+      "username": "lana_del",
+      "movie_title": "Inception",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 13,
+      "user_id": 13,
+      "movie_id": 27,
+      "rating": 4,
+      "comment": "An exceptionally well-made thriller that manages to keep the tension high despite taking place almost entirely in a single room.\n\nThe script is a masterclass in escalating stakes, revealing just enough information at key intervals to keep the audience guessing who is telling the truth. The tight, claustrophobic camera angles amplify the feeling of paranoia beautifully. It stumbles slightly with a predictable final twist, but the incredible acting performances make it well worth watching.",
+      "username": "marcus_aurelius",
+      "movie_title": "Spirited Away",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 14,
+      "user_id": 14,
+      "movie_id": 9,
+      "rating": 5,
+      "comment": "Wow. I am completely speechless. I walked into this movie completely blind and walked out feeling emotionally overwhelmed in the best way possible.\n\nThe story is devastatingly beautiful, capturing the complexities of human relationships with heartbreaking honesty. The musical score is hauntingly beautiful, lingering in your head long after the credits roll. It is a rare, poetic piece of cinema that demands your full attention and rewards you with an unforgettable experience. A true work of art.",
+      "username": "nina_simone",
+      "movie_title": "The Lord of the Rings: The Fellowship of the Ring",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 15,
+      "user_id": 15,
+      "movie_id": 33,
+      "rating": 3,
+      "comment": "A perfectly fine movie that doesn't take any risks. The acting is decent, the directing is competent, and the story beats happen exactly when you expect them to based on standard three-act structure.\n\nIt's the ultimate \"background noise\" film—enjoyable while you are watching it, but completely forgettable the moment you leave the theater. If you are looking for an easy, entertaining watch that won't challenge your brain at all, this fits the bill perfectly.",
+      "username": "oscar_wilde",
+      "movie_title": "The Lion King",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 16,
+      "user_id": 16,
+      "movie_id": 50,
+      "rating": 5,
+      "comment": "An absolute triumph. This is how you close out a trilogy! The stakes feel genuinely real, the character arcs that have been building for years get deeply satisfying payoffs, and the emotional resonance is massive.\n\nThe action sequences are beautifully choreographed and easy to follow, a massive relief from the shaky-cam trends dominating modern cinema. It is an incredibly satisfying conclusion that honors the characters and the fans perfectly.",
+      "username": "penelope_c",
+      "movie_title": "Cinema Paradiso",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 17,
+      "user_id": 17,
+      "movie_id": 3,
+      "rating": 4,
+      "comment": "A beautifully shot, deeply melancholic look at modern isolation. The director uses architecture and wide framing to emphasize how lonely the characters are despite living in a dense, bustling metropolis.\n\nThe performances are quiet and understated, relying heavily on subtle facial expressions rather than grand monologues. It's a slow burn that requires some patience, but if you sink into its moody rhythm, it is an incredibly rewarding and empathetic piece of work.",
+      "username": "quentin_t",
+      "movie_title": "The Dark Knight",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 18,
+      "user_id": 18,
+      "movie_id": 12,
+      "rating": 2,
+      "comment": "A massive disappointment. The original film is an undisputed classic, but this legacy sequel feels like a cynical, uninspired cash grab designed to capitalize on nostalgia.\n\nIt rehashes the exact same plot points as the original but executes them with half the charm and double the unnecessary CGI. New characters are introduced but given absolutely zero development, existing solely to set up potential spin-offs. Do yourself a favor and just rewatch the original instead.",
+      "username": "rachel_green",
+      "movie_title": "Forrest Gump",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 19,
+      "user_id": 19,
+      "movie_id": 42,
+      "rating": 5,
+      "comment": "Brilliant, sharp, and relentlessly funny. This is the best satirical comedy I have seen in a decade. The script takes aim at modern tech culture and slices through the hypocrisy with surgical precision.\n\nThe comedic timing of the ensemble cast is flawless, with background gags and rapid-fire dialogue that require multiple viewings to catch everything. Beneath the laugh-out-loud comedy is a genuinely terrifying and accurate critique of our current societal trajectory. Phenomenal work!",
+      "username": "sam_wilson",
+      "movie_title": "City Lights",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 20,
+      "user_id": 20,
+      "movie_id": 1,
+      "rating": 4,
+      "comment": "A very strong biographical drama that avoids the standard \"cradle-to-grave\" biopic traps by focusing heavily on one crucial week in the subject's life.\n\nThis narrow focus allows for incredible character depth and intense psychological exploration. The lead actor is unrecognizable, disappearing into the role completely. The historical production design is immaculate, making you feel like a fly on the wall in those smoke-filled rooms. A bit dry in the middle, but thoroughly engaging overall.",
+      "username": "tina_turner",
+      "movie_title": "The Shawshank Redemption",
+      "created_at": "2026-05-27T11:13:00Z"
+    },
+    {
+      "id": 21,
+      "user_id": 4,
+      "movie_id": 1,
+      "rating": 5,
+      "comment": "What a film. The kind of cinema that reminds you why this medium matters. Performances are uniformly excellent.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "dana_white",
+      "movie_title": "The Shawshank Redemption"
+    },
+    {
+      "id": 22,
+      "user_id": 8,
+      "movie_id": 2,
+      "rating": 4,
+      "comment": "Solid 4. The lead performance is genuinely great and the script is sharp. A couple of subplots don't quite land but they don't drag the whole down.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "hannah_b",
+      "movie_title": "The Godfather"
+    },
+    {
+      "id": 23,
+      "user_id": 19,
+      "movie_id": 2,
+      "rating": 5,
+      "comment": "A masterclass. The direction is so confident it borders on arrogant, and the film completely earns that confidence.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "sam_wilson",
+      "movie_title": "The Godfather"
+    },
+    {
+      "id": 24,
+      "user_id": 2,
+      "movie_id": 3,
+      "rating": 5,
+      "comment": "Easy 5 stars. Doesn't waste a single minute, and the ending lands without feeling earned at the audience's expense.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "bob_smith",
+      "movie_title": "The Dark Knight"
+    },
+    {
+      "id": 25,
+      "user_id": 8,
+      "movie_id": 4,
+      "rating": 4,
+      "comment": "Really strong overall. Loses a half-star for a third act that overstays its welcome by ten minutes, but everything before that is excellent.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "hannah_b",
+      "movie_title": "The Godfather Part II"
+    },
+    {
+      "id": 26,
+      "user_id": 19,
+      "movie_id": 4,
+      "rating": 5,
+      "comment": "This is what people mean when they talk about a movie that 'sticks with you'. Three days later and I'm still chewing on it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "sam_wilson",
+      "movie_title": "The Godfather Part II"
+    },
+    {
+      "id": 27,
+      "user_id": 15,
+      "movie_id": 5,
+      "rating": 5,
+      "comment": "Top-tier. The kind of film you immediately want to share with someone who'll appreciate it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "oscar_wilde",
+      "movie_title": "12 Angry Men"
+    },
+    {
+      "id": 28,
+      "user_id": 9,
+      "movie_id": 6,
+      "rating": 2,
+      "comment": "Pretty disappointed. The trailer promised something the film never delivers, and the pacing is genuinely punishing in the middle hour.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "ian_malcolm",
+      "movie_title": "Schindler's List"
+    },
+    {
+      "id": 29,
+      "user_id": 6,
+      "movie_id": 6,
+      "rating": 3,
+      "comment": "Fine. Competently made, nothing particularly memorable.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "fiona_gallagher",
+      "movie_title": "Schindler's List"
+    },
+    {
+      "id": 30,
+      "user_id": 9,
+      "movie_id": 7,
+      "rating": 5,
+      "comment": "Absolutely floored. I went in skeptical because of the hype and came out understanding every word of it. Best thing I've seen this year.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "ian_malcolm",
+      "movie_title": "The Lord of the Rings: The Return of the King"
+    },
+    {
+      "id": 31,
+      "user_id": 4,
+      "movie_id": 7,
+      "rating": 5,
+      "comment": "Caught this on a recommendation and ended up recommending it to three people the next day. Genuinely held up better than I expected.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "dana_white",
+      "movie_title": "The Lord of the Rings: The Return of the King"
+    },
+    {
+      "id": 32,
+      "user_id": 13,
+      "movie_id": 8,
+      "rating": 2,
+      "comment": "Skip it. The premise is interesting on paper but the execution is sloppy from the first act.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "marcus_aurelius",
+      "movie_title": "Pulp Fiction"
+    },
+    {
+      "id": 33,
+      "user_id": 2,
+      "movie_id": 9,
+      "rating": 3,
+      "comment": "Some great scenes stranded in a film that doesn't quite know what it wants to be.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "bob_smith",
+      "movie_title": "The Lord of the Rings: The Fellowship of the Ring"
+    },
+    {
+      "id": 34,
+      "user_id": 5,
+      "movie_id": 10,
+      "rating": 1,
+      "comment": "Painful. The dialogue alone is enough to recommend against it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "evan_wright",
+      "movie_title": "Il Buono, Il Brutto, Il Cattivo"
+    },
+    {
+      "id": 35,
+      "user_id": 3,
+      "movie_id": 11,
+      "rating": 4,
+      "comment": "Walked out happy. The score alone is worth the watch.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "charlie_brown",
+      "movie_title": "Fight Club"
+    },
+    {
+      "id": 36,
+      "user_id": 13,
+      "movie_id": 11,
+      "rating": 3,
+      "comment": "Middle of the road. Some genuinely good moments interspersed with stretches where the pacing drags.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "marcus_aurelius",
+      "movie_title": "Fight Club"
+    },
+    {
+      "id": 37,
+      "user_id": 2,
+      "movie_id": 12,
+      "rating": 3,
+      "comment": "Decent. Has enough going for it that I'd recommend it for a specific mood, but not as a general pick.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "bob_smith",
+      "movie_title": "Forrest Gump"
+    },
+    {
+      "id": 38,
+      "user_id": 3,
+      "movie_id": 13,
+      "rating": 2,
+      "comment": "Two stars and that's being generous. The script is thin and leans on the cast to carry material that wasn't quite there.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "charlie_brown",
+      "movie_title": "Inception"
+    },
+    {
+      "id": 39,
+      "user_id": 14,
+      "movie_id": 14,
+      "rating": 4,
+      "comment": "A confident piece of filmmaking. The cinematography is doing a lot of quiet work that I didn't fully appreciate until the second viewing.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "nina_simone",
+      "movie_title": "The Lord of the Rings: The Two Towers"
+    },
+    {
+      "id": 40,
+      "user_id": 6,
+      "movie_id": 15,
+      "rating": 4,
+      "comment": "Genuinely good. Wouldn't put it in my all-time list but I'd recommend it without reservation.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "fiona_gallagher",
+      "movie_title": "Star Wars: Episode V - The Empire Strikes Back"
+    },
+    {
+      "id": 41,
+      "user_id": 9,
+      "movie_id": 16,
+      "rating": 3,
+      "comment": "Middle of the road. Some genuinely good moments interspersed with stretches where the pacing drags.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "ian_malcolm",
+      "movie_title": "The Matrix"
+    },
+    {
+      "id": 42,
+      "user_id": 6,
+      "movie_id": 16,
+      "rating": 4,
+      "comment": "Genuinely good. Wouldn't put it in my all-time list but I'd recommend it without reservation.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "fiona_gallagher",
+      "movie_title": "The Matrix"
+    },
+    {
+      "id": 43,
+      "user_id": 6,
+      "movie_id": 17,
+      "rating": 4,
+      "comment": "Tight script, great performances, slightly muddled ending. Still well worth the watch.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "fiona_gallagher",
+      "movie_title": "GoodFellas"
+    },
+    {
+      "id": 44,
+      "user_id": 19,
+      "movie_id": 17,
+      "rating": 5,
+      "comment": "Absolutely floored. I went in skeptical because of the hype and came out understanding every word of it. Best thing I've seen this year.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "sam_wilson",
+      "movie_title": "GoodFellas"
+    },
+    {
+      "id": 45,
+      "user_id": 2,
+      "movie_id": 18,
+      "rating": 4,
+      "comment": "Really strong overall. Loses a half-star for a third act that overstays its welcome by ten minutes, but everything before that is excellent.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "bob_smith",
+      "movie_title": "One Flew Over the Cuckoo's Nest"
+    },
+    {
+      "id": 46,
+      "user_id": 11,
+      "movie_id": 19,
+      "rating": 4,
+      "comment": "Solid 4. The lead performance is genuinely great and the script is sharp. A couple of subplots don't quite land but they don't drag the whole down.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "kevin_bacon",
+      "movie_title": "Seven Samurai"
+    },
+    {
+      "id": 47,
+      "user_id": 7,
+      "movie_id": 19,
+      "rating": 1,
+      "comment": "Total mess. The kind of film that makes you appreciate how hard good filmmaking actually is.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "george_cloney",
+      "movie_title": "Seven Samurai"
+    },
+    {
+      "id": 48,
+      "user_id": 11,
+      "movie_id": 20,
+      "rating": 5,
+      "comment": "Cried twice. Genuinely beautiful filmmaking from the opening shot to the final cut.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "kevin_bacon",
+      "movie_title": "Se7en"
+    },
+    {
+      "id": 49,
+      "user_id": 14,
+      "movie_id": 20,
+      "rating": 2,
+      "comment": "Two stars. The cinematography saves it from a one.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "nina_simone",
+      "movie_title": "Se7en"
+    },
+    {
+      "id": 50,
+      "user_id": 5,
+      "movie_id": 21,
+      "rating": 4,
+      "comment": "Genuinely good. Wouldn't put it in my all-time list but I'd recommend it without reservation.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "evan_wright",
+      "movie_title": "The Silence of the Lambs"
+    },
+    {
+      "id": 51,
+      "user_id": 18,
+      "movie_id": 22,
+      "rating": 4,
+      "comment": "Walked out happy. The score alone is worth the watch.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "rachel_green",
+      "movie_title": "City of God"
+    },
+    {
+      "id": 52,
+      "user_id": 14,
+      "movie_id": 22,
+      "rating": 1,
+      "comment": "Painful. The dialogue alone is enough to recommend against it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "nina_simone",
+      "movie_title": "City of God"
+    },
+    {
+      "id": 53,
+      "user_id": 12,
+      "movie_id": 23,
+      "rating": 5,
+      "comment": "Phenomenal craft. The way the story unfolds rewards patience without ever feeling slow. I'll be thinking about this for a while.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "lana_del",
+      "movie_title": "It's a Wonderful Life"
+    },
+    {
+      "id": 54,
+      "user_id": 18,
+      "movie_id": 23,
+      "rating": 4,
+      "comment": "Really strong overall. Loses a half-star for a third act that overstays its welcome by ten minutes, but everything before that is excellent.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "rachel_green",
+      "movie_title": "It's a Wonderful Life"
+    },
+    {
+      "id": 55,
+      "user_id": 4,
+      "movie_id": 24,
+      "rating": 5,
+      "comment": "Phenomenal craft. The way the story unfolds rewards patience without ever feeling slow. I'll be thinking about this for a while.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "dana_white",
+      "movie_title": "Life Is Beautiful"
+    },
+    {
+      "id": 56,
+      "user_id": 15,
+      "movie_id": 24,
+      "rating": 3,
+      "comment": "Three stars feels right. Not a waste of time but not something I'd revisit.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "oscar_wilde",
+      "movie_title": "Life Is Beautiful"
+    },
+    {
+      "id": 57,
+      "user_id": 14,
+      "movie_id": 25,
+      "rating": 3,
+      "comment": "Inoffensive. The script does the job and the actors show up. Could have been more.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "nina_simone",
+      "movie_title": "Star Wars: Episode IV - A New Hope"
+    },
+    {
+      "id": 58,
+      "user_id": 17,
+      "movie_id": 26,
+      "rating": 4,
+      "comment": "Better than the reviews led me to believe. The character work is the strongest part.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "quentin_t",
+      "movie_title": "Saving Private Ryan"
+    },
+    {
+      "id": 59,
+      "user_id": 1,
+      "movie_id": 26,
+      "rating": 3,
+      "comment": "Middle of the road. Some genuinely good moments interspersed with stretches where the pacing drags.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "alice_jones",
+      "movie_title": "Saving Private Ryan"
+    },
+    {
+      "id": 60,
+      "user_id": 19,
+      "movie_id": 27,
+      "rating": 3,
+      "comment": "Fine. Competently made, nothing particularly memorable.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "sam_wilson",
+      "movie_title": "Spirited Away"
+    },
+    {
+      "id": 61,
+      "user_id": 4,
+      "movie_id": 28,
+      "rating": 4,
+      "comment": "Liked this a lot more than I expected. The pacing is patient in a way that pays off if you let it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "dana_white",
+      "movie_title": "The Green Mile"
+    },
+    {
+      "id": 62,
+      "user_id": 16,
+      "movie_id": 28,
+      "rating": 5,
+      "comment": "What a film. The kind of cinema that reminds you why this medium matters. Performances are uniformly excellent.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "penelope_c",
+      "movie_title": "The Green Mile"
+    },
+    {
+      "id": 63,
+      "user_id": 17,
+      "movie_id": 29,
+      "rating": 3,
+      "comment": "Some great scenes stranded in a film that doesn't quite know what it wants to be.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "quentin_t",
+      "movie_title": "Interstellar"
+    },
+    {
+      "id": 64,
+      "user_id": 4,
+      "movie_id": 29,
+      "rating": 2,
+      "comment": "Skip it. The premise is interesting on paper but the execution is sloppy from the first act.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "dana_white",
+      "movie_title": "Interstellar"
+    },
+    {
+      "id": 65,
+      "user_id": 17,
+      "movie_id": 30,
+      "rating": 3,
+      "comment": "Watchable. I don't regret seeing it but I wouldn't go back. Fine background-watch material.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "quentin_t",
+      "movie_title": "Parasite"
+    },
+    {
+      "id": 66,
+      "user_id": 12,
+      "movie_id": 30,
+      "rating": 3,
+      "comment": "Some great scenes stranded in a film that doesn't quite know what it wants to be.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "lana_del",
+      "movie_title": "Parasite"
+    },
+    {
+      "id": 67,
+      "user_id": 17,
+      "movie_id": 31,
+      "rating": 1,
+      "comment": "Total mess. The kind of film that makes you appreciate how hard good filmmaking actually is.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "quentin_t",
+      "movie_title": "Léon: The Professional"
+    },
+    {
+      "id": 68,
+      "user_id": 11,
+      "movie_id": 31,
+      "rating": 4,
+      "comment": "Solid 4. The lead performance is genuinely great and the script is sharp. A couple of subplots don't quite land but they don't drag the whole down.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "kevin_bacon",
+      "movie_title": "Léon: The Professional"
+    },
+    {
+      "id": 69,
+      "user_id": 13,
+      "movie_id": 32,
+      "rating": 2,
+      "comment": "Skip it. The premise is interesting on paper but the execution is sloppy from the first act.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "marcus_aurelius",
+      "movie_title": "The Usual Suspects"
+    },
+    {
+      "id": 70,
+      "user_id": 8,
+      "movie_id": 33,
+      "rating": 5,
+      "comment": "Top-tier. The kind of film you immediately want to share with someone who'll appreciate it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "hannah_b",
+      "movie_title": "The Lion King"
+    },
+    {
+      "id": 71,
+      "user_id": 3,
+      "movie_id": 34,
+      "rating": 5,
+      "comment": "Cried twice. Genuinely beautiful filmmaking from the opening shot to the final cut.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "charlie_brown",
+      "movie_title": "The Pianist"
+    },
+    {
+      "id": 72,
+      "user_id": 4,
+      "movie_id": 34,
+      "rating": 1,
+      "comment": "Total mess. The kind of film that makes you appreciate how hard good filmmaking actually is.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "dana_white",
+      "movie_title": "The Pianist"
+    },
+    {
+      "id": 73,
+      "user_id": 5,
+      "movie_id": 35,
+      "rating": 5,
+      "comment": "Cried twice. Genuinely beautiful filmmaking from the opening shot to the final cut.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "evan_wright",
+      "movie_title": "Terminator 2: Judgment Day"
+    },
+    {
+      "id": 74,
+      "user_id": 19,
+      "movie_id": 35,
+      "rating": 5,
+      "comment": "This is what people mean when they talk about a movie that 'sticks with you'. Three days later and I'm still chewing on it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "sam_wilson",
+      "movie_title": "Terminator 2: Judgment Day"
+    },
+    {
+      "id": 75,
+      "user_id": 20,
+      "movie_id": 36,
+      "rating": 4,
+      "comment": "Genuinely good. Wouldn't put it in my all-time list but I'd recommend it without reservation.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "tina_turner",
+      "movie_title": "Back to the Future"
+    },
+    {
+      "id": 76,
+      "user_id": 18,
+      "movie_id": 36,
+      "rating": 3,
+      "comment": "Mixed feelings. The first half is stronger than the second, and the ending feels like the writers ran out of ideas.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "rachel_green",
+      "movie_title": "Back to the Future"
+    },
+    {
+      "id": 77,
+      "user_id": 10,
+      "movie_id": 37,
+      "rating": 4,
+      "comment": "A confident piece of filmmaking. The cinematography is doing a lot of quiet work that I didn't fully appreciate until the second viewing.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "julia_roberts",
+      "movie_title": "American History X"
+    },
+    {
+      "id": 78,
+      "user_id": 16,
+      "movie_id": 37,
+      "rating": 1,
+      "comment": "Painful. The dialogue alone is enough to recommend against it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "penelope_c",
+      "movie_title": "American History X"
+    },
+    {
+      "id": 79,
+      "user_id": 4,
+      "movie_id": 38,
+      "rating": 4,
+      "comment": "Solid 4. The lead performance is genuinely great and the script is sharp. A couple of subplots don't quite land but they don't drag the whole down.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "dana_white",
+      "movie_title": "Modern Times"
+    },
+    {
+      "id": 80,
+      "user_id": 12,
+      "movie_id": 38,
+      "rating": 5,
+      "comment": "This is what people mean when they talk about a movie that 'sticks with you'. Three days later and I'm still chewing on it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "lana_del",
+      "movie_title": "Modern Times"
+    },
+    {
+      "id": 81,
+      "user_id": 8,
+      "movie_id": 39,
+      "rating": 3,
+      "comment": "Okay. Not bad, not great. The premise has more potential than the execution delivers, but the leads are charismatic enough to carry it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "hannah_b",
+      "movie_title": "Gladiator"
+    },
+    {
+      "id": 82,
+      "user_id": 3,
+      "movie_id": 39,
+      "rating": 3,
+      "comment": "Okay. Not bad, not great. The premise has more potential than the execution delivers, but the leads are charismatic enough to carry it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "charlie_brown",
+      "movie_title": "Gladiator"
+    },
+    {
+      "id": 83,
+      "user_id": 8,
+      "movie_id": 40,
+      "rating": 5,
+      "comment": "An absolute knockout. The kind of movie I wanted to watch again the moment the credits rolled.\n\nEvery scene feels deliberate, every performance earned. Hard to fault.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "hannah_b",
+      "movie_title": "Psycho"
+    },
+    {
+      "id": 84,
+      "user_id": 11,
+      "movie_id": 41,
+      "rating": 5,
+      "comment": "Easy 5 stars. Doesn't waste a single minute, and the ending lands without feeling earned at the audience's expense.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "kevin_bacon",
+      "movie_title": "The Departed"
+    },
+    {
+      "id": 85,
+      "user_id": 9,
+      "movie_id": 41,
+      "rating": 3,
+      "comment": "Mixed feelings. The first half is stronger than the second, and the ending feels like the writers ran out of ideas.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "ian_malcolm",
+      "movie_title": "The Departed"
+    },
+    {
+      "id": 86,
+      "user_id": 18,
+      "movie_id": 42,
+      "rating": 5,
+      "comment": "Top-tier. The kind of film you immediately want to share with someone who'll appreciate it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "rachel_green",
+      "movie_title": "City Lights"
+    },
+    {
+      "id": 87,
+      "user_id": 19,
+      "movie_id": 43,
+      "rating": 4,
+      "comment": "Held my attention from start to finish. The tonal shifts are handled better than most films manage.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "sam_wilson",
+      "movie_title": "Whiplash"
+    },
+    {
+      "id": 88,
+      "user_id": 14,
+      "movie_id": 43,
+      "rating": 5,
+      "comment": "Caught this on a recommendation and ended up recommending it to three people the next day. Genuinely held up better than I expected.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "nina_simone",
+      "movie_title": "Whiplash"
+    },
+    {
+      "id": 89,
+      "user_id": 14,
+      "movie_id": 44,
+      "rating": 4,
+      "comment": "Strong recommend. Not life-changing but a really well-made movie that respects the audience.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "nina_simone",
+      "movie_title": "The Prestige"
+    },
+    {
+      "id": 90,
+      "user_id": 16,
+      "movie_id": 44,
+      "rating": 2,
+      "comment": "Pretty disappointed. The trailer promised something the film never delivers, and the pacing is genuinely punishing in the middle hour.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "penelope_c",
+      "movie_title": "The Prestige"
+    },
+    {
+      "id": 91,
+      "user_id": 4,
+      "movie_id": 45,
+      "rating": 5,
+      "comment": "Absolutely floored. I went in skeptical because of the hype and came out understanding every word of it. Best thing I've seen this year.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "dana_white",
+      "movie_title": "The Intouchables"
+    },
+    {
+      "id": 92,
+      "user_id": 4,
+      "movie_id": 46,
+      "rating": 4,
+      "comment": "Genuinely good. Wouldn't put it in my all-time list but I'd recommend it without reservation.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "dana_white",
+      "movie_title": "Casablanca"
+    },
+    {
+      "id": 93,
+      "user_id": 19,
+      "movie_id": 46,
+      "rating": 4,
+      "comment": "Strong recommend. Not life-changing but a really well-made movie that respects the audience.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "sam_wilson",
+      "movie_title": "Casablanca"
+    },
+    {
+      "id": 94,
+      "user_id": 6,
+      "movie_id": 47,
+      "rating": 4,
+      "comment": "Genuinely good. Wouldn't put it in my all-time list but I'd recommend it without reservation.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "fiona_gallagher",
+      "movie_title": "Once Upon a Time in the West"
+    },
+    {
+      "id": 95,
+      "user_id": 3,
+      "movie_id": 47,
+      "rating": 4,
+      "comment": "Better than the reviews led me to believe. The character work is the strongest part.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "charlie_brown",
+      "movie_title": "Once Upon a Time in the West"
+    },
+    {
+      "id": 96,
+      "user_id": 4,
+      "movie_id": 48,
+      "rating": 5,
+      "comment": "This is what people mean when they talk about a movie that 'sticks with you'. Three days later and I'm still chewing on it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "dana_white",
+      "movie_title": "Rear Window"
+    },
+    {
+      "id": 97,
+      "user_id": 1,
+      "movie_id": 48,
+      "rating": 1,
+      "comment": "One of the worst things I've sat through this year. Avoid.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "alice_jones",
+      "movie_title": "Rear Window"
+    },
+    {
+      "id": 98,
+      "user_id": 6,
+      "movie_id": 49,
+      "rating": 4,
+      "comment": "Held my attention from start to finish. The tonal shifts are handled better than most films manage.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "fiona_gallagher",
+      "movie_title": "Alien"
+    },
+    {
+      "id": 99,
+      "user_id": 8,
+      "movie_id": 49,
+      "rating": 2,
+      "comment": "Pretty disappointed. The trailer promised something the film never delivers, and the pacing is genuinely punishing in the middle hour.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "hannah_b",
+      "movie_title": "Alien"
+    },
+    {
+      "id": 100,
+      "user_id": 6,
+      "movie_id": 50,
+      "rating": 4,
+      "comment": "Strong recommend. Not life-changing but a really well-made movie that respects the audience.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "fiona_gallagher",
+      "movie_title": "Cinema Paradiso"
+    },
+    {
+      "id": 101,
+      "user_id": 20,
+      "movie_id": 17,
+      "rating": 5,
+      "comment": "Absolutely floored. I went in skeptical because of the hype and came out understanding every word of it. Best thing I've seen this year.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "tina_turner",
+      "movie_title": "GoodFellas"
+    },
+    {
+      "id": 102,
+      "user_id": 2,
+      "movie_id": 17,
+      "rating": 5,
+      "comment": "Cried twice. Genuinely beautiful filmmaking from the opening shot to the final cut.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "bob_smith",
+      "movie_title": "GoodFellas"
+    },
+    {
+      "id": 103,
+      "user_id": 8,
+      "movie_id": 17,
+      "rating": 5,
+      "comment": "This is what people mean when they talk about a movie that 'sticks with you'. Three days later and I'm still chewing on it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "hannah_b",
+      "movie_title": "GoodFellas"
+    },
+    {
+      "id": 104,
+      "user_id": 3,
+      "movie_id": 17,
+      "rating": 2,
+      "comment": "Two stars and that's being generous. The script is thin and leans on the cast to carry material that wasn't quite there.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "charlie_brown",
+      "movie_title": "GoodFellas"
+    },
+    {
+      "id": 105,
+      "user_id": 3,
+      "movie_id": 30,
+      "rating": 3,
+      "comment": "Mixed feelings. The first half is stronger than the second, and the ending feels like the writers ran out of ideas.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "charlie_brown",
+      "movie_title": "Parasite"
+    },
+    {
+      "id": 106,
+      "user_id": 15,
+      "movie_id": 30,
+      "rating": 5,
+      "comment": "Top-tier. The kind of film you immediately want to share with someone who'll appreciate it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "oscar_wilde",
+      "movie_title": "Parasite"
+    },
+    {
+      "id": 107,
+      "user_id": 9,
+      "movie_id": 30,
+      "rating": 3,
+      "comment": "Okay. Not bad, not great. The premise has more potential than the execution delivers, but the leads are charismatic enough to carry it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "ian_malcolm",
+      "movie_title": "Parasite"
+    },
+    {
+      "id": 108,
+      "user_id": 13,
+      "movie_id": 30,
+      "rating": 5,
+      "comment": "Top-tier. The kind of film you immediately want to share with someone who'll appreciate it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "marcus_aurelius",
+      "movie_title": "Parasite"
+    },
+    {
+      "id": 109,
+      "user_id": 14,
+      "movie_id": 30,
+      "rating": 3,
+      "comment": "Decent. Has enough going for it that I'd recommend it for a specific mood, but not as a general pick.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "nina_simone",
+      "movie_title": "Parasite"
+    },
+    {
+      "id": 110,
+      "user_id": 5,
+      "movie_id": 30,
+      "rating": 3,
+      "comment": "Fine. Competently made, nothing particularly memorable.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "evan_wright",
+      "movie_title": "Parasite"
+    },
+    {
+      "id": 111,
+      "user_id": 6,
+      "movie_id": 30,
+      "rating": 4,
+      "comment": "Liked this a lot more than I expected. The pacing is patient in a way that pays off if you let it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "fiona_gallagher",
+      "movie_title": "Parasite"
+    },
+    {
+      "id": 112,
+      "user_id": 20,
+      "movie_id": 30,
+      "rating": 3,
+      "comment": "Inoffensive. The script does the job and the actors show up. Could have been more.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "tina_turner",
+      "movie_title": "Parasite"
+    },
+    {
+      "id": 113,
+      "user_id": 3,
+      "movie_id": 19,
+      "rating": 5,
+      "comment": "Top-tier. The kind of film you immediately want to share with someone who'll appreciate it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "charlie_brown",
+      "movie_title": "Seven Samurai"
+    },
+    {
+      "id": 114,
+      "user_id": 5,
+      "movie_id": 19,
+      "rating": 5,
+      "comment": "Easy 5 stars. Doesn't waste a single minute, and the ending lands without feeling earned at the audience's expense.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "evan_wright",
+      "movie_title": "Seven Samurai"
+    },
+    {
+      "id": 115,
+      "user_id": 13,
+      "movie_id": 19,
+      "rating": 5,
+      "comment": "Absolutely floored. I went in skeptical because of the hype and came out understanding every word of it. Best thing I've seen this year.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "marcus_aurelius",
+      "movie_title": "Seven Samurai"
+    },
+    {
+      "id": 116,
+      "user_id": 20,
+      "movie_id": 19,
+      "rating": 5,
+      "comment": "Easy 5 stars. Doesn't waste a single minute, and the ending lands without feeling earned at the audience's expense.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "tina_turner",
+      "movie_title": "Seven Samurai"
+    },
+    {
+      "id": 117,
+      "user_id": 9,
+      "movie_id": 19,
+      "rating": 4,
+      "comment": "Held my attention from start to finish. The tonal shifts are handled better than most films manage.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "ian_malcolm",
+      "movie_title": "Seven Samurai"
+    },
+    {
+      "id": 118,
+      "user_id": 15,
+      "movie_id": 19,
+      "rating": 3,
+      "comment": "Solid B-tier. If you've already seen everything else worth watching, sure.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "oscar_wilde",
+      "movie_title": "Seven Samurai"
+    },
+    {
+      "id": 119,
+      "user_id": 1,
+      "movie_id": 28,
+      "rating": 3,
+      "comment": "Some great scenes stranded in a film that doesn't quite know what it wants to be.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "alice_jones",
+      "movie_title": "The Green Mile"
+    },
+    {
+      "id": 120,
+      "user_id": 12,
+      "movie_id": 28,
+      "rating": 2,
+      "comment": "Two stars and that's being generous. The script is thin and leans on the cast to carry material that wasn't quite there.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "lana_del",
+      "movie_title": "The Green Mile"
+    },
+    {
+      "id": 121,
+      "user_id": 7,
+      "movie_id": 28,
+      "rating": 4,
+      "comment": "Solid 4. The lead performance is genuinely great and the script is sharp. A couple of subplots don't quite land but they don't drag the whole down.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "george_cloney",
+      "movie_title": "The Green Mile"
+    },
+    {
+      "id": 122,
+      "user_id": 17,
+      "movie_id": 28,
+      "rating": 3,
+      "comment": "Decent. Has enough going for it that I'd recommend it for a specific mood, but not as a general pick.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "quentin_t",
+      "movie_title": "The Green Mile"
+    },
+    {
+      "id": 123,
+      "user_id": 8,
+      "movie_id": 28,
+      "rating": 3,
+      "comment": "Fine. Competently made, nothing particularly memorable.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "hannah_b",
+      "movie_title": "The Green Mile"
+    },
+    {
+      "id": 124,
+      "user_id": 6,
+      "movie_id": 28,
+      "rating": 3,
+      "comment": "Decent. Has enough going for it that I'd recommend it for a specific mood, but not as a general pick.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "fiona_gallagher",
+      "movie_title": "The Green Mile"
+    },
+    {
+      "id": 125,
+      "user_id": 15,
+      "movie_id": 28,
+      "rating": 4,
+      "comment": "Really strong overall. Loses a half-star for a third act that overstays its welcome by ten minutes, but everything before that is excellent.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "oscar_wilde",
+      "movie_title": "The Green Mile"
+    },
+    {
+      "id": 126,
+      "user_id": 3,
+      "movie_id": 28,
+      "rating": 3,
+      "comment": "Decent. Has enough going for it that I'd recommend it for a specific mood, but not as a general pick.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "charlie_brown",
+      "movie_title": "The Green Mile"
+    },
+    {
+      "id": 127,
+      "user_id": 1,
+      "movie_id": 45,
+      "rating": 4,
+      "comment": "Liked this a lot more than I expected. The pacing is patient in a way that pays off if you let it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "alice_jones",
+      "movie_title": "The Intouchables"
+    },
+    {
+      "id": 128,
+      "user_id": 12,
+      "movie_id": 45,
+      "rating": 5,
+      "comment": "Cried twice. Genuinely beautiful filmmaking from the opening shot to the final cut.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "lana_del",
+      "movie_title": "The Intouchables"
+    },
+    {
+      "id": 129,
+      "user_id": 18,
+      "movie_id": 45,
+      "rating": 3,
+      "comment": "Middle of the road. Some genuinely good moments interspersed with stretches where the pacing drags.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "rachel_green",
+      "movie_title": "The Intouchables"
+    },
+    {
+      "id": 130,
+      "user_id": 3,
+      "movie_id": 45,
+      "rating": 2,
+      "comment": "Didn't work for me. The tonal whiplash between scenes is exhausting, and none of the characters earn the emotional beats the film keeps asking for.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "charlie_brown",
+      "movie_title": "The Intouchables"
+    },
+    {
+      "id": 131,
+      "user_id": 2,
+      "movie_id": 36,
+      "rating": 2,
+      "comment": "Didn't work for me. The tonal whiplash between scenes is exhausting, and none of the characters earn the emotional beats the film keeps asking for.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "bob_smith",
+      "movie_title": "Back to the Future"
+    },
+    {
+      "id": 132,
+      "user_id": 15,
+      "movie_id": 36,
+      "rating": 5,
+      "comment": "What a film. The kind of cinema that reminds you why this medium matters. Performances are uniformly excellent.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "oscar_wilde",
+      "movie_title": "Back to the Future"
+    },
+    {
+      "id": 133,
+      "user_id": 13,
+      "movie_id": 36,
+      "rating": 2,
+      "comment": "Pretty disappointed. The trailer promised something the film never delivers, and the pacing is genuinely punishing in the middle hour.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "marcus_aurelius",
+      "movie_title": "Back to the Future"
+    },
+    {
+      "id": 134,
+      "user_id": 19,
+      "movie_id": 36,
+      "rating": 4,
+      "comment": "Genuinely good. Wouldn't put it in my all-time list but I'd recommend it without reservation.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "sam_wilson",
+      "movie_title": "Back to the Future"
+    },
+    {
+      "id": 135,
+      "user_id": 12,
+      "movie_id": 36,
+      "rating": 5,
+      "comment": "This is what people mean when they talk about a movie that 'sticks with you'. Three days later and I'm still chewing on it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "lana_del",
+      "movie_title": "Back to the Future"
+    },
+    {
+      "id": 136,
+      "user_id": 8,
+      "movie_id": 36,
+      "rating": 2,
+      "comment": "Didn't work for me. The tonal whiplash between scenes is exhausting, and none of the characters earn the emotional beats the film keeps asking for.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "hannah_b",
+      "movie_title": "Back to the Future"
+    },
+    {
+      "id": 137,
+      "user_id": 5,
+      "movie_id": 36,
+      "rating": 2,
+      "comment": "Didn't work for me. The tonal whiplash between scenes is exhausting, and none of the characters earn the emotional beats the film keeps asking for.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "evan_wright",
+      "movie_title": "Back to the Future"
+    },
+    {
+      "id": 138,
+      "user_id": 10,
+      "movie_id": 36,
+      "rating": 5,
+      "comment": "Absolutely floored. I went in skeptical because of the hype and came out understanding every word of it. Best thing I've seen this year.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "julia_roberts",
+      "movie_title": "Back to the Future"
+    },
+    {
+      "id": 139,
+      "user_id": 8,
+      "movie_id": 43,
+      "rating": 4,
+      "comment": "Solid 4. The lead performance is genuinely great and the script is sharp. A couple of subplots don't quite land but they don't drag the whole down.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "hannah_b",
+      "movie_title": "Whiplash"
+    },
+    {
+      "id": 140,
+      "user_id": 15,
+      "movie_id": 43,
+      "rating": 2,
+      "comment": "Two stars. The cinematography saves it from a one.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "oscar_wilde",
+      "movie_title": "Whiplash"
+    },
+    {
+      "id": 141,
+      "user_id": 9,
+      "movie_id": 43,
+      "rating": 4,
+      "comment": "Held my attention from start to finish. The tonal shifts are handled better than most films manage.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "ian_malcolm",
+      "movie_title": "Whiplash"
+    },
+    {
+      "id": 142,
+      "user_id": 6,
+      "movie_id": 43,
+      "rating": 4,
+      "comment": "Genuinely good. Wouldn't put it in my all-time list but I'd recommend it without reservation.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "fiona_gallagher",
+      "movie_title": "Whiplash"
+    },
+    {
+      "id": 143,
+      "user_id": 4,
+      "movie_id": 43,
+      "rating": 5,
+      "comment": "Easy 5 stars. Doesn't waste a single minute, and the ending lands without feeling earned at the audience's expense.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "dana_white",
+      "movie_title": "Whiplash"
+    },
+    {
+      "id": 144,
+      "user_id": 11,
+      "movie_id": 43,
+      "rating": 4,
+      "comment": "Solid 4. The lead performance is genuinely great and the script is sharp. A couple of subplots don't quite land but they don't drag the whole down.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "kevin_bacon",
+      "movie_title": "Whiplash"
+    },
+    {
+      "id": 145,
+      "user_id": 7,
+      "movie_id": 43,
+      "rating": 4,
+      "comment": "Better than the reviews led me to believe. The character work is the strongest part.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "george_cloney",
+      "movie_title": "Whiplash"
+    },
+    {
+      "id": 146,
+      "user_id": 20,
+      "movie_id": 32,
+      "rating": 4,
+      "comment": "Really strong overall. Loses a half-star for a third act that overstays its welcome by ten minutes, but everything before that is excellent.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "tina_turner",
+      "movie_title": "The Usual Suspects"
+    },
+    {
+      "id": 147,
+      "user_id": 4,
+      "movie_id": 32,
+      "rating": 2,
+      "comment": "Skip it. The premise is interesting on paper but the execution is sloppy from the first act.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "dana_white",
+      "movie_title": "The Usual Suspects"
+    },
+    {
+      "id": 148,
+      "user_id": 8,
+      "movie_id": 32,
+      "rating": 3,
+      "comment": "Decent. Has enough going for it that I'd recommend it for a specific mood, but not as a general pick.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "hannah_b",
+      "movie_title": "The Usual Suspects"
+    },
+    {
+      "id": 149,
+      "user_id": 1,
+      "movie_id": 32,
+      "rating": 5,
+      "comment": "A masterclass. The direction is so confident it borders on arrogant, and the film completely earns that confidence.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "alice_jones",
+      "movie_title": "The Usual Suspects"
+    },
+    {
+      "id": 150,
+      "user_id": 10,
+      "movie_id": 32,
+      "rating": 3,
+      "comment": "Fine. Competently made, nothing particularly memorable.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "julia_roberts",
+      "movie_title": "The Usual Suspects"
+    },
+    {
+      "id": 151,
+      "user_id": 12,
+      "movie_id": 32,
+      "rating": 3,
+      "comment": "Some great scenes stranded in a film that doesn't quite know what it wants to be.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "lana_del",
+      "movie_title": "The Usual Suspects"
+    },
+    {
+      "id": 152,
+      "user_id": 3,
+      "movie_id": 32,
+      "rating": 4,
+      "comment": "Walked out happy. The score alone is worth the watch.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "charlie_brown",
+      "movie_title": "The Usual Suspects"
+    },
+    {
+      "id": 153,
+      "user_id": 11,
+      "movie_id": 10,
+      "rating": 5,
+      "comment": "A masterclass. The direction is so confident it borders on arrogant, and the film completely earns that confidence.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "kevin_bacon",
+      "movie_title": "Il Buono, Il Brutto, Il Cattivo"
+    },
+    {
+      "id": 154,
+      "user_id": 2,
+      "movie_id": 10,
+      "rating": 3,
+      "comment": "Some great scenes stranded in a film that doesn't quite know what it wants to be.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "bob_smith",
+      "movie_title": "Il Buono, Il Brutto, Il Cattivo"
+    },
+    {
+      "id": 155,
+      "user_id": 10,
+      "movie_id": 10,
+      "rating": 4,
+      "comment": "Solid 4. The lead performance is genuinely great and the script is sharp. A couple of subplots don't quite land but they don't drag the whole down.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "julia_roberts",
+      "movie_title": "Il Buono, Il Brutto, Il Cattivo"
+    },
+    {
+      "id": 156,
+      "user_id": 16,
+      "movie_id": 10,
+      "rating": 2,
+      "comment": "Hard pass on a rewatch. I was checking my phone by the 45-minute mark.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "penelope_c",
+      "movie_title": "Il Buono, Il Brutto, Il Cattivo"
+    },
+    {
+      "id": 157,
+      "user_id": 17,
+      "movie_id": 10,
+      "rating": 2,
+      "comment": "Skip it. The premise is interesting on paper but the execution is sloppy from the first act.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "quentin_t",
+      "movie_title": "Il Buono, Il Brutto, Il Cattivo"
+    },
+    {
+      "id": 158,
+      "user_id": 11,
+      "movie_id": 13,
+      "rating": 3,
+      "comment": "Fine. Competently made, nothing particularly memorable.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "kevin_bacon",
+      "movie_title": "Inception"
+    },
+    {
+      "id": 159,
+      "user_id": 16,
+      "movie_id": 13,
+      "rating": 3,
+      "comment": "Some great scenes stranded in a film that doesn't quite know what it wants to be.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "penelope_c",
+      "movie_title": "Inception"
+    },
+    {
+      "id": 160,
+      "user_id": 6,
+      "movie_id": 13,
+      "rating": 4,
+      "comment": "Strong recommend. Not life-changing but a really well-made movie that respects the audience.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "fiona_gallagher",
+      "movie_title": "Inception"
+    },
+    {
+      "id": 161,
+      "user_id": 15,
+      "movie_id": 13,
+      "rating": 3,
+      "comment": "Watchable. I don't regret seeing it but I wouldn't go back. Fine background-watch material.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "oscar_wilde",
+      "movie_title": "Inception"
+    },
+    {
+      "id": 162,
+      "user_id": 14,
+      "movie_id": 13,
+      "rating": 3,
+      "comment": "Three stars feels right. Not a waste of time but not something I'd revisit.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "nina_simone",
+      "movie_title": "Inception"
+    },
+    {
+      "id": 163,
+      "user_id": 13,
+      "movie_id": 13,
+      "rating": 2,
+      "comment": "Skip it. The premise is interesting on paper but the execution is sloppy from the first act.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "marcus_aurelius",
+      "movie_title": "Inception"
+    },
+    {
+      "id": 164,
+      "user_id": 7,
+      "movie_id": 13,
+      "rating": 4,
+      "comment": "Walked out happy. The score alone is worth the watch.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "george_cloney",
+      "movie_title": "Inception"
+    },
+    {
+      "id": 165,
+      "user_id": 19,
+      "movie_id": 13,
+      "rating": 3,
+      "comment": "Inoffensive. The script does the job and the actors show up. Could have been more.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "sam_wilson",
+      "movie_title": "Inception"
+    },
+    {
+      "id": 166,
+      "user_id": 17,
+      "movie_id": 48,
+      "rating": 3,
+      "comment": "Some great scenes stranded in a film that doesn't quite know what it wants to be.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "quentin_t",
+      "movie_title": "Rear Window"
+    },
+    {
+      "id": 167,
+      "user_id": 19,
+      "movie_id": 48,
+      "rating": 3,
+      "comment": "Watchable. I don't regret seeing it but I wouldn't go back. Fine background-watch material.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "sam_wilson",
+      "movie_title": "Rear Window"
+    },
+    {
+      "id": 168,
+      "user_id": 5,
+      "movie_id": 48,
+      "rating": 4,
+      "comment": "Walked out happy. The score alone is worth the watch.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "evan_wright",
+      "movie_title": "Rear Window"
+    },
+    {
+      "id": 169,
+      "user_id": 9,
+      "movie_id": 48,
+      "rating": 5,
+      "comment": "Easy 5 stars. Doesn't waste a single minute, and the ending lands without feeling earned at the audience's expense.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "ian_malcolm",
+      "movie_title": "Rear Window"
+    },
+    {
+      "id": 170,
+      "user_id": 15,
+      "movie_id": 48,
+      "rating": 4,
+      "comment": "Genuinely good. Wouldn't put it in my all-time list but I'd recommend it without reservation.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "oscar_wilde",
+      "movie_title": "Rear Window"
+    },
+    {
+      "id": 171,
+      "user_id": 6,
+      "movie_id": 48,
+      "rating": 5,
+      "comment": "Easy 5 stars. Doesn't waste a single minute, and the ending lands without feeling earned at the audience's expense.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "fiona_gallagher",
+      "movie_title": "Rear Window"
+    },
+    {
+      "id": 172,
+      "user_id": 13,
+      "movie_id": 48,
+      "rating": 3,
+      "comment": "Middle of the road. Some genuinely good moments interspersed with stretches where the pacing drags.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "marcus_aurelius",
+      "movie_title": "Rear Window"
+    },
+    {
+      "id": 173,
+      "user_id": 16,
+      "movie_id": 14,
+      "rating": 2,
+      "comment": "Rough. There's a good movie buried in here somewhere but the editing room didn't find it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "penelope_c",
+      "movie_title": "The Lord of the Rings: The Two Towers"
+    },
+    {
+      "id": 174,
+      "user_id": 15,
+      "movie_id": 14,
+      "rating": 4,
+      "comment": "Genuinely good. Wouldn't put it in my all-time list but I'd recommend it without reservation.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "oscar_wilde",
+      "movie_title": "The Lord of the Rings: The Two Towers"
+    },
+    {
+      "id": 175,
+      "user_id": 6,
+      "movie_id": 14,
+      "rating": 3,
+      "comment": "Okay. Not bad, not great. The premise has more potential than the execution delivers, but the leads are charismatic enough to carry it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "fiona_gallagher",
+      "movie_title": "The Lord of the Rings: The Two Towers"
+    },
+    {
+      "id": 176,
+      "user_id": 20,
+      "movie_id": 14,
+      "rating": 3,
+      "comment": "Middle of the road. Some genuinely good moments interspersed with stretches where the pacing drags.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "tina_turner",
+      "movie_title": "The Lord of the Rings: The Two Towers"
+    },
+    {
+      "id": 177,
+      "user_id": 18,
+      "movie_id": 14,
+      "rating": 4,
+      "comment": "Liked this a lot more than I expected. The pacing is patient in a way that pays off if you let it.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "rachel_green",
+      "movie_title": "The Lord of the Rings: The Two Towers"
+    },
+    {
+      "id": 178,
+      "user_id": 19,
+      "movie_id": 14,
+      "rating": 2,
+      "comment": "Two stars. The cinematography saves it from a one.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "sam_wilson",
+      "movie_title": "The Lord of the Rings: The Two Towers"
+    },
+    {
+      "id": 179,
+      "user_id": 1,
+      "movie_id": 14,
+      "rating": 3,
+      "comment": "Middle of the road. Some genuinely good moments interspersed with stretches where the pacing drags.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "alice_jones",
+      "movie_title": "The Lord of the Rings: The Two Towers"
+    },
+    {
+      "id": 180,
+      "user_id": 15,
+      "movie_id": 9,
+      "rating": 2,
+      "comment": "Hard pass on a rewatch. I was checking my phone by the 45-minute mark.",
+      "created_at": "2026-05-27T11:13:00Z",
+      "username": "oscar_wilde",
+      "movie_title": "The Lord of the Rings: The Fellowship of the Ring"
+    }
+  ]
+}

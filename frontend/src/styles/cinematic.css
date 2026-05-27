@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Hanken+Grotesk:wght@400;500;600&display=swap");
+
+:root {
+  --font-display: "Oswald", "Hanken Grotesk", sans-serif;
+  --font-body: "Hanken Grotesk", system-ui, sans-serif;
+  --gold: oklch(0.82 0.13 85);
+  --gold-soft: oklch(0.82 0.13 85 / 0.45);
+  --success: oklch(0.8 0.16 145);
+  --success-soft: oklch(0.8 0.16 145 / 0.45);
+}
+
+/* deep cool slate — no warm cast, dark-mode native. */
+html.dark {
+  --background: oklch(0.13 0.008 240);
+  --foreground: oklch(0.96 0.005 240);
+  --muted-foreground: oklch(0.65 0.012 240);
+}
+
+body {
+  font-family: var(--font-body);
+  min-height: 100vh;
+  background:
+    radial-gradient(80% 55% at 50% -10%, oklch(0.22 0.04 260 / 0.45), transparent 70%),
+    var(--background);
+}
+
+@keyframes cineRise {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); filter: blur(4px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+.cine-rise { animation: cineRise 0.6s cubic-bezier(0.4, 0, 0.2, 1) both; }
+
+@keyframes cineShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.cine-shimmer {
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.10) 50%,
+    rgba(255, 255, 255, 0.03) 75%
+  );
+  background-size: 200% 100%;
+  animation: cineShimmer 2.4s ease-in-out infinite;
+}
+
+/* hide native scrollbars on the carousel rows. */
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cine-rise { animation: none; }
+  .cine-shimmer { animation: none; background: rgba(255, 255, 255, 0.04); }
+}
