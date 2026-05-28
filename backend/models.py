@@ -35,6 +35,7 @@ class Movie(db.Model):
     title = db.Column(db.String(255), nullable=False)
     release_year = db.Column(db.Integer, nullable=False)
     genre = db.Column(db.String(100))
+    poster_url = db.Column(db.String(500))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     
     # Relationships
@@ -46,20 +47,21 @@ class Movie(db.Model):
             'title': self.title,
             'release_year': self.release_year,
             'genre': self.genre,
-            'created_at': self.created_at.isoformat()
+            'poster_url': self.poster_url,
+            'created_at': self.created_at.isoformat(),
+            'average_rating': self.get_average_rating(),
+            'review_count': len(self.reviews)
         }
         
         if include_reviews:
-            data['reviews'] = [review.to_dict() for review in self.reviews]
-            data['average_rating'] = self.get_average_rating()
-            data['total_reviews'] = len(self.reviews)
+            data['reviews'] = [review.to_dict(with_names=True) for review in self.reviews]
         
         return data
     
     def get_average_rating(self):
         """Calculate average rating for this movie"""
         if not self.reviews:
-            return 0.0
+            return None
         
         total_rating = sum(review.rating for review in self.reviews)
         average = total_rating / len(self.reviews)
@@ -83,7 +85,7 @@ class Review(db.Model):
     # Unique constraint to prevent duplicate reviews
     __table_args__ = (db.UniqueConstraint('user_id', 'movie_id', name='uq_user_movie'),)
     
-    def to_dict(self, include_user=False, include_movie=False):
+    def to_dict(self, with_names=False):
         data = {
             'id': self.id,
             'user_id': self.user_id,
@@ -93,11 +95,9 @@ class Review(db.Model):
             'created_at': self.created_at.isoformat()
         }
         
-        if include_user:
-            data['user'] = self.user.to_dict()
-        
-        if include_movie:
-            data['movie'] = self.movie.to_dict()
+        if with_names:
+            data['username'] = self.user.username
+            data['movie_title'] = self.movie.title
         
         return data
     

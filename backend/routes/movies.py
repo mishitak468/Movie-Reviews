@@ -17,6 +17,10 @@ def get_all_movies():
     Fetch all movies in the catalog
     """
     try:
+        # the frontend expects the full list; pagination is opt-in via ?page
+        if request.args.get('page') is None:
+            return get_success_response([movie.to_dict() for movie in Movie.query.all()])
+
         page = request.args.get('page', 1, type=int)
         per_page = request.args.get('per_page', 10, type=int)
         
@@ -73,37 +77,11 @@ def get_top_rated_movies():
     (Stretch) Return movies sorted by average rating (highest first)
     """
     try:
-        limit = request.args.get('limit', 10, type=int)
+        # only movies that have a rating, sorted high to low
+        rated = [m for m in Movie.query.all() if m.get_average_rating() is not None]
+        rated.sort(key=lambda m: m.get_average_rating(), reverse=True)
         
-        if limit < 1 or limit > 100:
-            return get_error_response('Limit must be between 1 and 100', 400)
-        
-        # Get all movies with their average ratings
-        all_movies = Movie.query.all()
-        
-        # Sort by average rating
-        sorted_movies = sorted(
-            all_movies,
-            key=lambda m: m.get_average_rating(),
-            reverse=True
-        )
-        
-        # Apply limit
-        top_movies = sorted_movies[:limit]
-        
-        movies_data = [
-            {
-                **movie.to_dict(),
-                'average_rating': movie.get_average_rating(),
-                'total_reviews': len(movie.reviews)
-            }
-            for movie in top_movies
-        ]
-        
-        return get_success_response({
-            'top_rated_movies': movies_data,
-            'count': len(movies_data)
-        })
+        return get_success_response([movie.to_dict() for movie in rated])
     except Exception as e:
         return get_error_response(f'Error fetching top-rated movies: {str(e)}', 500)
 
@@ -138,7 +116,8 @@ def create_movie():
         new_movie = Movie(
             title=data['title'],
             release_year=int(data['release_year']),
-            genre=data.get('genre', '')
+            genre=data.get('genre', ''),
+            poster_url=data.get('poster_url')
         )
         
         db.session.add(new_movie)
@@ -183,6 +162,8 @@ def update_movie(movie_id):
             movie.release_year = int(data['release_year'])
         if 'genre' in data:
             movie.genre = data['genre']
+        if 'poster_url' in data:
+            movie.poster_url = data['poster_url']
         
         db.session.commit()
         

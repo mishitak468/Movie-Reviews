@@ -16,6 +16,10 @@ def get_all_users():
     Fetch all users
     """
     try:
+        # the frontend's user picker expects the full list; pagination is opt-in via ?page
+        if request.args.get('page') is None:
+            return get_success_response([user.to_dict() for user in User.query.all()])
+
         page = request.args.get('page', 1, type=int)
         per_page = request.args.get('per_page', 10, type=int)
         
@@ -77,6 +81,12 @@ def get_user_reviews(user_id):
         if not user:
             return get_error_response(f'User with ID {user_id} not found', 404)
         
+        # the frontend expects the full list; pagination is opt-in via ?page
+        if request.args.get('page') is None:
+            return get_success_response(
+                [review.to_dict(with_names=True) for review in user.reviews]
+            )
+
         page = request.args.get('page', 1, type=int)
         per_page = request.args.get('per_page', 10, type=int)
         
@@ -85,7 +95,6 @@ def get_user_reviews(user_id):
         if per_page < 1 or per_page > 100:
             return get_error_response('Per page must be between 1 and 100', 400)
         
-        # Query reviews for this user with pagination
         paginated_reviews = Review.query.filter_by(user_id=user_id).paginate(
             page=page,
             per_page=per_page,
@@ -93,7 +102,7 @@ def get_user_reviews(user_id):
         )
         
         reviews_data = [
-            review.to_dict(include_movie=True)
+            review.to_dict(with_names=True)
             for review in paginated_reviews.items
         ]
         
