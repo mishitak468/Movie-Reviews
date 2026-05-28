@@ -31,7 +31,7 @@ export default function UserAvatar({ username, userId, size = 36 }: Props) {
         width: size,
         height: size,
         fontSize: Math.round(size * 0.38),
-        background: `radial-gradient(120% 120% at 30% 15%, hsl(${hue} 38% 34%), hsl(${(hue + 30) % 360} 42% 18%))`,
+        backgroundColor: `hsl(${hue} 36% 32%)`,
       }}
       aria-hidden="true"
     >

@@ -1,11 +1,12 @@
-import { Plus, Search, X } from "lucide-react";
+import { Search, X } from "lucide-react";
 import { useEffect, useRef, useState, type ReactElement } from "react";
+import CatalogFilters, { SORT_OPTIONS, sortMovies, type SortKey } from "@/components/CatalogFilters";
+import CatalogMenu from "@/components/CatalogMenu";
+import HeaderActions from "@/components/HeaderActions";
 import MovieCard from "@/components/MovieCard";
 import MovieCardSkeleton from "@/components/MovieCardSkeleton";
 import MovieForm from "@/components/MovieForm";
 import MovieRow from "@/components/MovieRow";
-import UserPicker from "@/components/UserPicker";
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -32,6 +33,8 @@ export default function Home(): ReactElement {
   const [topRated, setTopRated] = useState<Movie[]>([]);
   const [status, setStatus] = useState<"loading" | "error" | "ready">("loading");
   const [query, setQuery] = useState("");
+  const [genre, setGenre] = useState("all");
+  const [sort, setSort] = useState<SortKey>("featured");
   const [visibleRowCount, setVisibleRowCount] = useState(INITIAL_ROWS);
   const [showAddDialog, setShowAddDialog] = useState(false);
   const searchRef = useRef<HTMLInputElement>(null);
@@ -68,7 +71,16 @@ export default function Home(): ReactElement {
   }, []);
 
   const q = query.trim().toLowerCase();
-  const filtered = q ? movies.filter((m) => m.title.toLowerCase().includes(q)) : null;
+  // any of search / genre / sort being active leaves the row-browse view and
+  // shows a flat sorted grid — same pattern search already used on its own.
+  const narrowed = q !== "" || genre !== "all" || sort !== "featured";
+  let result: Movie[] | null = null;
+  if (narrowed) {
+    result = genre === "all" ? movies : movies.filter((m) => m.genre === genre);
+    if (q) result = result.filter((m) => m.title.toLowerCase().includes(q));
+    result = sortMovies(result, sort);
+  }
+  const sortLabel = SORT_OPTIONS.find((o) => o.value === sort)?.label;
 
   const byGenre = new Map<string, Movie[]>();
   for (const m of movies) {
@@ -82,7 +94,7 @@ export default function Home(): ReactElement {
   const totalRows = (topRated.length > 0 ? 1 : 0) + genres.length;
 
   useEffect(() => {
-    if (status !== "ready" || filtered !== null) return;
+    if (status !== "ready" || narrowed) return;
     if (visibleRowCount >= totalRows) return;
     const el = sentinelRef.current;
     if (!el) return;
@@ -96,7 +108,7 @@ export default function Home(): ReactElement {
     );
     io.observe(el);
     return () => io.disconnect();
-  }, [status, filtered, visibleRowCount, totalRows]);
+  }, [status, narrowed, visibleRowCount, totalRows]);
 
   const genreRowsToShow = topRated.length > 0 ? Math.max(0, visibleRowCount - 1) : visibleRowCount;
   const allRowsVisible = visibleRowCount >= totalRows;
@@ -107,22 +119,13 @@ export default function Home(): ReactElement {
         <h1 className="text-5xl font-medium tracking-tight sm:text-6xl" style={{ fontFamily: "var(--font-display)" }}>
           Movie Reviews
         </h1>
-        <div className="flex items-center gap-3">
-          <Button
-            type="button"
-            variant="ghost"
-            onClick={() => setShowAddDialog(true)}
-            className="cursor-pointer text-muted-foreground hover:text-white"
-          >
-            <Plus size={16} className="mr-1.5" />
-            Add film
-          </Button>
-          <UserPicker />
-        </div>
+        <HeaderActions>
+          <CatalogMenu movies={movies} onAddFilm={() => setShowAddDialog(true)} />
+        </HeaderActions>
       </header>
 
-      <div className="mb-12">
-        <div className="relative max-w-md">
+      <div className="mb-12 flex flex-wrap items-center gap-3">
+        <div className="relative w-full max-w-md flex-1">
           <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
           <Input
             ref={searchRef}
@@ -130,7 +133,7 @@ export default function Home(): ReactElement {
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search films…"
             aria-label="Search films"
-            className="border-white/10 bg-white/[0.03] pl-9 pr-10"
+            className="h-9 border-white/10 bg-white/[0.03] pl-9 pr-10"
           />
           {query && (
             <button
@@ -143,6 +146,17 @@ export default function Home(): ReactElement {
             </button>
           )}
         </div>
+        <CatalogFilters
+          genres={genres}
+          genre={genre}
+          sort={sort}
+          onGenreChange={setGenre}
+          onSortChange={setSort}
+          onReset={() => {
+            setGenre("all");
+            setSort("featured");
+          }}
+        />
       </div>
 
       {status === "loading" && (
@@ -163,16 +177,22 @@ export default function Home(): ReactElement {
         <p className="py-24 text-center text-muted-foreground">Couldn’t load films. Is the data source running?</p>
       )}
 
-      {status === "ready" && filtered !== null && (
+      {status === "ready" && result !== null && (
         <section>
-          <p className="mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-            {filtered.length} result{filtered.length === 1 ? "" : "s"} for “{query.trim()}”
+          <p
+            className="mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            {result.length} film{result.length === 1 ? "" : "s"}
+            {q && <> · “{query.trim()}”</>}
+            {genre !== "all" && <> · {genre}</>}
+            {sort !== "featured" && <> · {sortLabel}</>}
           </p>
-          {filtered.length === 0 ? (
-            <p className="py-24 text-center text-muted-foreground">No films match that search.</p>
+          {result.length === 0 ? (
+            <p className="py-24 text-center text-muted-foreground">No films match those filters.</p>
           ) : (
             <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
-              {filtered.map((m, i) => (
+              {result.map((m, i) => (
                 <MovieCard key={m.id} movie={m} index={i} />
               ))}
             </div>
@@ -180,7 +200,7 @@ export default function Home(): ReactElement {
         </section>
       )}
 
-      {status === "ready" && filtered === null && (
+      {status === "ready" && result === null && (
         <>
           {topRated.length > 0 && (
             <MovieRow title="Top Rated">

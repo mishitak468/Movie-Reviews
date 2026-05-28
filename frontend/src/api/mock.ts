@@ -11,6 +11,8 @@ import {
 // mutable in-memory copies so create/update/delete persist within a session.
 const users: User[] = structuredClone(seed.users);
 let movies: Omit<Movie, "average_rating" | "review_count">[] = structuredClone(
+  // strip the aggregates — they're recomputed per-call by withAggregates below.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   seed.movies.map(({ average_rating, review_count, ...m }) => m),
 );
 let reviews: Review[] = structuredClone(seed.reviews);

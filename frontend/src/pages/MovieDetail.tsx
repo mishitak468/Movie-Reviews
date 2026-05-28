@@ -1,11 +1,12 @@
-import { ArrowLeft, Calendar, Check, Film, MessageSquare, Pencil, Tag, Trash2 } from "lucide-react";
+import { ArrowLeft, Calendar, Check, Film, MessageSquare, Pencil, Tag } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import FilmActionsMenu from "@/components/FilmActionsMenu";
+import HeaderActions from "@/components/HeaderActions";
 import MovieDetailSkeleton from "@/components/MovieDetailSkeleton";
 import MovieForm from "@/components/MovieForm";
 import RatingStars from "@/components/RatingStars";
 import ReviewCard from "@/components/ReviewCard";
-import UserPicker from "@/components/UserPicker";
 import WriteReviewForm from "@/components/WriteReviewForm";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,14 +17,14 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { useCurrentUser } from "@/lib/useCurrentUser";
+import { useCurrentUser } from "@/lib/userContext";
 import { notifyReviewsChanged } from "@/lib/useReviewedMovieIds";
 import { ApiError, api, type MovieDetail as MovieDetailT } from "@/api";
 
 export default function MovieDetail() {
   const { id } = useParams<{ id: string }>();
   const movieId = id ? Number(id) : NaN;
-  const { currentUser } = useCurrentUser();
+  const { currentUser, loading: usersLoading } = useCurrentUser();
   const navigate = useNavigate();
 
   const [movie, setMovie] = useState<MovieDetailT | null>(null);
@@ -32,6 +33,7 @@ export default function MovieDetail() {
   const [showEdit, setShowEdit] = useState(false);
   const [confirmingDeleteMovie, setConfirmingDeleteMovie] = useState(false);
   const [deletingMovie, setDeletingMovie] = useState(false);
+  const [writingReview, setWritingReview] = useState(false);
 
   const load = useCallback(async () => {
     if (Number.isNaN(movieId)) {
@@ -105,7 +107,9 @@ export default function MovieDetail() {
     }
   };
 
-  if (status === "loading") {
+  // hold the skeleton until the user list is ready too, so the header controls
+  // reveal in step with the page content instead of a fetch behind it.
+  if (status === "loading" || usersLoading) {
     return <MovieDetailSkeleton />;
   }
   if (status === "error") {
@@ -154,7 +158,12 @@ export default function MovieDetail() {
             <ArrowLeft size={14} />
             All films
           </Link>
-          <UserPicker />
+          <HeaderActions>
+            <FilmActionsMenu
+              onEdit={() => setShowEdit(true)}
+              onDelete={() => setConfirmingDeleteMovie(true)}
+            />
+          </HeaderActions>
         </nav>
 
         <section className="mb-12 grid gap-8 md:grid-cols-[260px_1fr] md:gap-10">
@@ -207,45 +216,47 @@ export default function MovieDetail() {
             </div>
 
             <RatingStars rating={movie.average_rating} size={20} />
-
-            <div className="flex items-center gap-1 pt-1">
-              <button
-                type="button"
-                onClick={() => setShowEdit(true)}
-                className="flex cursor-pointer items-center gap-1.5 rounded-md px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-white/5 hover:text-white"
-              >
-                <Pencil size={12} />
-                Edit film
-              </button>
-              <button
-                type="button"
-                onClick={() => setConfirmingDeleteMovie(true)}
-                className="flex cursor-pointer items-center gap-1.5 rounded-md px-2 py-1 text-xs text-muted-foreground transition-colors hover:bg-white/5 hover:text-red-300"
-              >
-                <Trash2 size={12} />
-                Delete film
-              </button>
-            </div>
           </div>
         </section>
 
         <section className="space-y-6">
-          <header className="flex items-baseline justify-between gap-4 border-b border-white/5 pb-3">
+          <header className="flex items-center justify-between gap-4 border-b border-white/5 pb-3">
             <h2
               className="text-2xl"
               style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
             >
               Reviews
             </h2>
-            <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              {movie.reviews.length} total
-            </span>
+            <div className="flex items-center gap-4">
+              {currentUser && !ownReview && !writingReview && (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setWritingReview(true)}
+                  className="h-7 cursor-pointer text-xs text-muted-foreground hover:text-white"
+                >
+                  <Pencil size={12} className="mr-1.5" />
+                  Write a review
+                </Button>
+              )}
+              <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                {movie.reviews.length} total
+              </span>
+            </div>
           </header>
 
-          {currentUser && !ownReview && (
+          {currentUser && !ownReview && writingReview && (
             <div className="rounded-lg border border-white/10 bg-white/[0.03] p-5">
               <h3 className="mb-4 text-sm font-medium">Write a review</h3>
-              <WriteReviewForm mode="create" onSubmit={handleCreate} />
+              <WriteReviewForm
+                mode="create"
+                onSubmit={async (input) => {
+                  await handleCreate(input);
+                  setWritingReview(false);
+                }}
+                onCancel={() => setWritingReview(false)}
+              />
             </div>
           )}
 
