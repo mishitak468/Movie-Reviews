@@ -6,7 +6,12 @@ export default function MovieDetailSkeleton() {
       <div className="relative mx-auto max-w-6xl px-6 py-8">
         <nav className="mb-8 flex items-center justify-between gap-4">
           <div className="h-5 w-20 rounded cine-shimmer" />
-          <div className="h-9 w-44 rounded cine-shimmer" />
+          {/* mirrors HeaderActions' loading state so the two skeleton phases
+              (page load -> user-list load) don't visibly change. */}
+          <div className="flex items-center gap-3">
+            <div className="h-9 w-44 rounded cine-shimmer" />
+            <div className="h-9 w-9 rounded cine-shimmer" />
+          </div>
         </nav>
 
         <section className="mb-12 grid gap-8 md:grid-cols-[260px_1fr] md:gap-10">

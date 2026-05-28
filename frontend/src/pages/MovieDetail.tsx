@@ -1,23 +1,39 @@
-import { ArrowLeft, Calendar, Check, Film, MessageSquare, Tag } from "lucide-react";
+import { ArrowLeft, Calendar, Check, Film, MessageSquare, Pencil, Tag } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import FilmActionsMenu from "@/components/FilmActionsMenu";
+import HeaderActions from "@/components/HeaderActions";
 import MovieDetailSkeleton from "@/components/MovieDetailSkeleton";
+import MovieForm from "@/components/MovieForm";
 import RatingStars from "@/components/RatingStars";
 import ReviewCard from "@/components/ReviewCard";
-import UserPicker from "@/components/UserPicker";
 import WriteReviewForm from "@/components/WriteReviewForm";
-import { useCurrentUser } from "@/lib/useCurrentUser";
+import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { useCurrentUser } from "@/lib/userContext";
 import { notifyReviewsChanged } from "@/lib/useReviewedMovieIds";
 import { ApiError, api, type MovieDetail as MovieDetailT } from "@/api";
 
 export default function MovieDetail() {
   const { id } = useParams<{ id: string }>();
   const movieId = id ? Number(id) : NaN;
-  const { currentUser } = useCurrentUser();
+  const { currentUser, loading: usersLoading } = useCurrentUser();
+  const navigate = useNavigate();
 
   const [movie, setMovie] = useState<MovieDetailT | null>(null);
   const [status, setStatus] = useState<"loading" | "error" | "not-found" | "ready">("loading");
   const [imgFailed, setImgFailed] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
+  const [confirmingDeleteMovie, setConfirmingDeleteMovie] = useState(false);
+  const [deletingMovie, setDeletingMovie] = useState(false);
+  const [writingReview, setWritingReview] = useState(false);
 
   const load = useCallback(async () => {
     if (Number.isNaN(movieId)) {
@@ -71,7 +87,29 @@ export default function MovieDetail() {
     if (currentUser) notifyReviewsChanged(currentUser.id);
   };
 
-  if (status === "loading") {
+  const handleEditMovie = async (input: { title: string; release_year: number; genre: string; poster_url?: string | null }) => {
+    if (!movie) return;
+    await api.updateMovie(movie.id, input);
+    await load();
+    setShowEdit(false);
+  };
+
+  const handleDeleteMovie = async () => {
+    if (!movie) return;
+    setDeletingMovie(true);
+    try {
+      await api.deleteMovie(movie.id);
+      // mock cascades to reviews, so the current user's reviewedIds may be stale.
+      if (currentUser) notifyReviewsChanged(currentUser.id);
+      navigate("/");
+    } finally {
+      setDeletingMovie(false);
+    }
+  };
+
+  // hold the skeleton until the user list is ready too, so the header controls
+  // reveal in step with the page content instead of a fetch behind it.
+  if (status === "loading" || usersLoading) {
     return <MovieDetailSkeleton />;
   }
   if (status === "error") {
@@ -120,7 +158,12 @@ export default function MovieDetail() {
             <ArrowLeft size={14} />
             All films
           </Link>
-          <UserPicker />
+          <HeaderActions>
+            <FilmActionsMenu
+              onEdit={() => setShowEdit(true)}
+              onDelete={() => setConfirmingDeleteMovie(true)}
+            />
+          </HeaderActions>
         </nav>
 
         <section className="mb-12 grid gap-8 md:grid-cols-[260px_1fr] md:gap-10">
@@ -177,22 +220,43 @@ export default function MovieDetail() {
         </section>
 
         <section className="space-y-6">
-          <header className="flex items-baseline justify-between gap-4 border-b border-white/5 pb-3">
+          <header className="flex items-center justify-between gap-4 border-b border-white/5 pb-3">
             <h2
               className="text-2xl"
               style={{ fontFamily: "var(--font-display)", fontWeight: 500 }}
             >
               Reviews
             </h2>
-            <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              {movie.reviews.length} total
-            </span>
+            <div className="flex items-center gap-4">
+              {currentUser && !ownReview && !writingReview && (
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setWritingReview(true)}
+                  className="h-7 cursor-pointer text-xs text-muted-foreground hover:text-white"
+                >
+                  <Pencil size={12} className="mr-1.5" />
+                  Write a review
+                </Button>
+              )}
+              <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                {movie.reviews.length} total
+              </span>
+            </div>
           </header>
 
-          {currentUser && !ownReview && (
+          {currentUser && !ownReview && writingReview && (
             <div className="rounded-lg border border-white/10 bg-white/[0.03] p-5">
               <h3 className="mb-4 text-sm font-medium">Write a review</h3>
-              <WriteReviewForm mode="create" onSubmit={handleCreate} />
+              <WriteReviewForm
+                mode="create"
+                onSubmit={async (input) => {
+                  await handleCreate(input);
+                  setWritingReview(false);
+                }}
+                onCancel={() => setWritingReview(false)}
+              />
             </div>
           )}
 
@@ -225,6 +289,60 @@ export default function MovieDetail() {
           )}
         </section>
       </div>
+
+      <Dialog open={showEdit} onOpenChange={setShowEdit}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Edit film</DialogTitle>
+            <DialogDescription>
+              Update the title, genre, year, or poster URL.
+            </DialogDescription>
+          </DialogHeader>
+          <MovieForm
+            mode="edit"
+            initialValues={{
+              title: movie.title,
+              release_year: movie.release_year,
+              genre: movie.genre ?? "",
+              poster_url: movie.poster_url,
+            }}
+            extraGenres={movie.genre ? [movie.genre] : []}
+            onSubmit={handleEditMovie}
+            onCancel={() => setShowEdit(false)}
+          />
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={confirmingDeleteMovie} onOpenChange={setConfirmingDeleteMovie}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Delete “{movie.title}”?</DialogTitle>
+            <DialogDescription>
+              This permanently removes the film and every review attached to it. It can&apos;t be undone.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button
+              type="button"
+              variant="ghost"
+              onClick={() => setConfirmingDeleteMovie(false)}
+              disabled={deletingMovie}
+              className="cursor-pointer"
+            >
+              Keep it
+            </Button>
+            <Button
+              type="button"
+              variant="destructive"
+              onClick={handleDeleteMovie}
+              disabled={deletingMovie}
+              className="cursor-pointer"
+            >
+              {deletingMovie ? "Deleting…" : "Delete film"}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </main>
   );
 }

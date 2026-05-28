@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { api, type User } from "@/api";
 
 const STORAGE_KEY = "movie-reviews:current-user-id";
-// custom event name so different hook instances in the same tab can react to
-// each other's writes. the native 'storage' event only fires across tabs.
+// same-tab custom event so useReviewedMovieIds (which reads the id on its own)
+// hears picker changes. the native 'storage' event only fires across tabs.
 const CHANGE_EVENT = "movie-reviews:user-changed";
 
 function readStoredId(): number | null {
@@ -18,23 +18,26 @@ function readStoredId(): number | null {
 function writeStoredId(id: number): void {
   try {
     localStorage.setItem(STORAGE_KEY, String(id));
-    // notify other instances of this hook in the same tab.
     window.dispatchEvent(new CustomEvent(CHANGE_EVENT, { detail: id }));
   } catch {
     // ignore quota / sandbox errors
   }
 }
 
-// shared "who am I reviewing as" state. used by the picker in the header
-// and by detail pages to decide which reviews show edit/delete affordances.
-// persisted to localStorage so the choice survives reloads, and synced
-// across hook instances so changing the picker updates the page live.
-export function useCurrentUser(): {
+type Ctx = {
   users: User[];
   currentUser: User | null;
   setCurrentUserId: (id: number) => void;
   loading: boolean;
-} {
+};
+
+const UserContext = createContext<Ctx | null>(null);
+
+// single source of "who am I reviewing as": one fetch, one loading state,
+// shared by the header picker and the detail page. previously every consumer
+// ran its own getUsers() with its own loading, so the header lagged the page
+// content it should have appeared alongside.
+export function UserProvider({ children }: { children: ReactNode }) {
   const [users, setUsers] = useState<User[]>([]);
   const [currentUserId, setCurrentUserIdState] = useState<number | null>(readStoredId());
   const [loading, setLoading] = useState(true);
@@ -59,25 +62,18 @@ export function useCurrentUser(): {
     return () => {
       active = false;
     };
-    // we only fetch the list once on mount.
+    // fetch the list once on mount.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // listen for picker changes from any other instance of this hook.
+  // cross-tab sync: another tab's picker write updates this one. same-tab
+  // updates flow through the shared context directly, so no listener needed.
   useEffect(() => {
-    const onChange = (e: Event) => {
-      const id = (e as CustomEvent<number>).detail;
-      if (typeof id === "number") setCurrentUserIdState(id);
-    };
     const onStorage = (e: StorageEvent) => {
       if (e.key === STORAGE_KEY && e.newValue) setCurrentUserIdState(Number(e.newValue));
     };
-    window.addEventListener(CHANGE_EVENT, onChange);
-    window.addEventListener("storage", onStorage); // across-tab sync (free).
-    return () => {
-      window.removeEventListener(CHANGE_EVENT, onChange);
-      window.removeEventListener("storage", onStorage);
-    };
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
   }, []);
 
   const setCurrentUserId = (id: number) => {
@@ -87,5 +83,15 @@ export function useCurrentUser(): {
 
   const currentUser = users.find((u) => u.id === currentUserId) ?? null;
 
-  return { users, currentUser, setCurrentUserId, loading };
+  return (
+    <UserContext.Provider value={{ users, currentUser, setCurrentUserId, loading }}>
+      {children}
+    </UserContext.Provider>
+  );
+}
+
+export function useCurrentUser(): Ctx {
+  const ctx = useContext(UserContext);
+  if (!ctx) throw new Error("useCurrentUser must be used within UserProvider");
+  return ctx;
 }

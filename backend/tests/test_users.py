@@ -38,7 +38,7 @@ class TestUserEndpoints:
         """Test GET /api/users"""
         response = client.get('/api/users')
         assert response.status_code == 200
-        assert len(response.json['data']['users']) == 3
+        assert len(response.json['data']) == 3
     
     def test_get_user_by_id(self, client, sample_users):
         """Test GET /api/users/<id>"""
@@ -71,7 +71,7 @@ class TestUserEndpoints:
         user_id = sample_users[0]
         response = client.get(f'/api/users/{user_id}/reviews')
         assert response.status_code == 200
-        assert len(response.json['data']['reviews']) == 1
+        assert len(response.json['data']) == 1
 
 class TestUserModel:
     """Test User model"""

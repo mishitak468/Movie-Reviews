@@ -33,7 +33,7 @@ export type Review = {
 
 export type MovieDetail = Movie & { reviews: Review[] };
 
-export type MovieInput = { title: string; release_year: number; genre: string };
+export type MovieInput = { title: string; release_year: number; genre: string; poster_url?: string | null };
 export type ReviewInput = { user_id: number; movie_id: number; rating: number; comment: string };
 export type ReviewUpdate = { rating: number; comment: string };
 
@@ -47,7 +47,7 @@ export type Api = {
   updateMovie(id: number, input: MovieInput): Promise<Movie>;
   deleteMovie(id: number): Promise<void>;
 
-  getUsers(): Promise<User[]>; // not in the backend's list yet — see README
+  getUsers(): Promise<User[]>;
   getUserReviews(userId: number): Promise<Review[]>;
 
   createReview(input: ReviewInput): Promise<Review>; // throws ApiError 409 on duplicate
@@ -56,8 +56,13 @@ export type Api = {
 };
 
 export class ApiError extends Error {
-  constructor(public status: number, message: string) {
+  status: number;
+  errors: string[]; // backend sends {success:false, errors:[...]}; message is the joined form, this is the raw list
+
+  constructor(status: number, message: string, errors: string[] = [message]) {
     super(message);
+    this.status = status;
+    this.errors = errors;
     this.name = "ApiError";
   }
 }

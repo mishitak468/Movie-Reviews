@@ -39,7 +39,7 @@ class TestMovieEndpoints:
         response = client.get('/api/movies')
         assert response.status_code == 200
         assert response.json['success'] is True
-        assert len(response.json['data']['movies']) == 3
+        assert len(response.json['data']) == 3
     
     def test_get_all_movies_pagination(self, client, sample_movies):
         """Test pagination on GET /api/movies"""
@@ -125,7 +125,7 @@ class TestMovieEndpoints:
         
         response = client.get('/api/movies/top-rated?limit=10')
         assert response.status_code == 200
-        top_movies = response.json['data']['top_rated_movies']
+        top_movies = response.json['data']
         assert top_movies[0]['title'] == 'Good Movie'
         assert top_movies[0]['average_rating'] == 5.0
 
@@ -147,7 +147,7 @@ class TestMovieModel:
             ]
             
             avg = movie.get_average_rating()
-            assert avg == 0.0  # No reviews yet
+            assert avg is None  # No reviews yet
     
     def test_movie_to_dict(self, app):
         """Test to_dict method"""

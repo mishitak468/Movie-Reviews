@@ -50,7 +50,7 @@ def create_review():
         db.session.commit()
         
         return get_success_response(
-            new_review.to_dict(include_user=True, include_movie=True),
+            new_review.to_dict(with_names=True),
             'Review created successfully',
             201
         )
@@ -72,7 +72,7 @@ def get_review_by_id(review_id):
             return get_error_response(f'Review with ID {review_id} not found', 404)
         
         return get_success_response(
-            review.to_dict(include_user=True, include_movie=True)
+            review.to_dict(with_names=True)
         )
     except Exception as e:
         return get_error_response(f'Error fetching review: {str(e)}', 500)
@@ -114,7 +114,7 @@ def update_review(review_id):
         db.session.commit()
         
         return get_success_response(
-            review.to_dict(include_user=True, include_movie=True),
+            review.to_dict(with_names=True),
             'Review updated successfully'
         )
     except Exception as e:
