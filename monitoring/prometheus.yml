@@ -1,0 +1,15 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  # prometheus watching itself — cheap sanity target, confirms the server is alive
+  - job_name: prometheus
+    static_configs:
+      - targets: ["localhost:9090"]
+
+  # host/vm metrics from node_exporter — this is the data the dashboard and alert run on
+  # "node-exporter" resolves to the container over the compose network; swap to the app
+  # ec2 private ip (e.g. 10.0.x.x:9100) at deploy time, nothing else changes
+  - job_name: node
+    static_configs:
+      - targets: ["node-exporter:9100"]
