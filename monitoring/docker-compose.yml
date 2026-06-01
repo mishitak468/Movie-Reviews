@@ -8,6 +8,8 @@ services:
       - prometheus-data:/prometheus
     ports:
       - "9090:9090"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     restart: unless-stopped
 
   node-exporter:
@@ -15,6 +17,17 @@ services:
     container_name: node-exporter
     ports:
       - "9100:9100"
+    restart: unless-stopped
+
+  python-app:
+    build: ../backend
+    container_name: movie-app
+    ports:
+      - "5001:5001"
+    environment:
+      - FLASK_ENV=production
+    depends_on:
+      - prometheus
     restart: unless-stopped
 
   grafana:

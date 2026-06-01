@@ -6,6 +6,11 @@ scrape_configs:
   - job_name: prometheus
     static_configs:
       - targets: ["localhost:9090"]
+  
+  - job_name: 'flask-app'
+    static_configs:
+      - targets: ['python-app:5001'] 
+ 
 
   # host/vm metrics from node_exporter — this is the data the dashboard and alert run on
   # "node-exporter" resolves to the container over the compose network; swap to the app
@@ -13,3 +18,8 @@ scrape_configs:
   - job_name: node
     static_configs:
       - targets: ["node-exporter:9100"]
+
+  - job_name: flask-movie-reviews
+    static_configs:
+      - targets: ["host.docker.internal:5001"]
+
